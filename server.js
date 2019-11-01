@@ -7,7 +7,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
+// Express middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
@@ -16,7 +16,7 @@ app.use(passport.initialize());
 if (process.env.NODE_ENV === "production") {
   app.use(passport.session()); app.use(express.static(path.join(__dirname, '../build')));
 }
-// Add routes, both API and view
+
 app.use(routes);
 
 /* === Server-Side Authentication w/passport.js on our Model === */
@@ -26,7 +26,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mWatchDB");
 
 // Start the API server
 app.listen(PORT, function() {
