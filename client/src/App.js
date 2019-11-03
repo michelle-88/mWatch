@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
+import Trending from "./pages/Trending"
 import { BrowserRouter as Router, Route, Redirect, Link, Switch, withRouter } from "react-router-dom";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <div>
       <Nav />
       <Switch>
-
+        <Route exact path="/trending" component={Trending}/>
         <Route exact path="/search" component={Search} />
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
