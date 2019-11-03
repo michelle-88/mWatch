@@ -1,39 +1,41 @@
 const db = require("../models");
+const passport = require("passport")
+// const User = require("../models/user")
 
 // Defining methods for the booksController
 module.exports = {
-  findAll: function(req, res) {
-    db.Book
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  findById: function(req, res) {
-    db.Book
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  create: function(req, res) {
-    db.Book
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  update: function(req, res) {
-    db.Book
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  remove: function(req, res) {
-    db.Book
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findAll: function(req, res) {
+  //   db.Book
+  //     .find(req.query)
+  //     .sort({ date: -1 })
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findById: function(req, res) {
+  //   db.Book
+  //     .findById(req.params.id)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // create: function(req, res) {
+  //   db.Book
+  //     .create(req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // update: function(req, res) {
+  //   db.Book
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // remove: function(req, res) {
+  //   db.Book
+  //     .findById({ _id: req.params.id })
+  //     .then(dbModel => dbModel.remove())
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   // user authenication
   getUser: (req, res, next)=>{
@@ -51,11 +53,16 @@ module.exports = {
   },
   register: function(req, res, next) {
     console.log('/register handler', req.body);
-    db.User.register(new User({ username : req.body.username }), req.body.password, (err, account) => {
+    console.log(req.body.userName)
+    console.log(req.body.password)
+    db.User.create(req.body, (err, user)=>{
+    // db.User.register(new User({ userName : req.body.userName, password : req.body.password}), (err, user) => {
       if (err) {
+        console.log("error")
+        console.log(err)
         return res.status(500).send({ error : err.message });
       }
-      passport.authenticate('local')(req, res, () => {
+      passport.authenticate('local'),(req, res, () => {
         req.session.save((err) => {
           if (err) {
             //ToDo:log the error and look for an existing user

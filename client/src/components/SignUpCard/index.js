@@ -9,7 +9,7 @@ class SignUpCard extends React.Component {
 	passwordElem: null;
 
 	render() {
-		const { onRegister } = this.props;
+		let { onRegister } = this.props;
 		console.log(`Register form props are: ${JSON.stringify(this.props)}`);
 		
 		return (
@@ -18,8 +18,10 @@ class SignUpCard extends React.Component {
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
 						e.preventDefault();
+						console.log(this.usernameElem.value)
+						console.log(this.passwordElem.value)
 						return onRegister({
-							username: this.usernameElem.value,
+							userName:  this.usernameElem.value,
 							password: this.passwordElem.value
 						});
 					}}

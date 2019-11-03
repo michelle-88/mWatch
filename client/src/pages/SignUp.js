@@ -1,25 +1,32 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import SignUpCard from "../components/SignUpCard";
+import Landing from "../components/Landing";
+import Auth from "../utils/Auth";
+const axios = require("axios");
 //The component for doing the actual signup of the User
 class SignUp extends React.Component {
 	state = {
-		redirectToReferrer: false
+		redirectToReferrer: false,
+		userName: ""
 	}
-
 	register = (data) => {
-		fetch('api/users/register', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			credentials: 'include'
-		})
+		this.setState({userName: data.userName})
+		axios.post('api/users/signup', data)
+		// fetch('api/users/signup', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(data),
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	credentials: 'include'
+		// })
 		.then((response) => {
 			if (response.status === 200) {
 				console.log('Succesfully registered user!');
-				//relocate to the login page
-				window.location.assign("/protected");
+				Auth.authenticate(() => { //Update the boolean and take off the cuffs
+                    this.setState({ redirectToReferrer: true });
+				});
 			}
 		})
 		.catch((err) => {
@@ -28,6 +35,13 @@ class SignUp extends React.Component {
 	}
 
 	render() {
+		const { from } = this.props.location.state || { from: { pathname: "/"+this.state.userName+'/trending' } }
+		const { redirectToReferrer } = this.state
+		if (redirectToReferrer) {
+			return (
+				<Redirect to={from}/>
+			)
+        } 
 		return (
 			<div>
                 <Landing/>

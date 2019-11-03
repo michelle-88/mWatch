@@ -6,7 +6,7 @@ router.route("/")
     .get(userController.getUser);
 router.route("/signup")
     .post(userController.register);
-router.route("/logn")
+router.route("/login")
     .post(passport.authenticate("local", {failureRedirect: "/login"}), userController.login);
 router.route("/logout")
     .get(userController.logout);

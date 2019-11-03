@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Landing from "../components/Landing"
 
@@ -8,11 +8,10 @@ function Home(){
             <Landing/>
             <h3></h3>
             <div className="text-center">
-                <button className="btn btn-lg"><Link to="/login">Login</Link></button>
-                <button className="btn btn-lg"><Link to="/signup">Sign Up</Link></button>
+                <Link to="/login"><button className="btn btn-lg">Login</button></Link>
+                <Link to="/signup"><button className="btn btn-lg">Sign Up</button></Link>
             </div>
         </div>
-
     )
 }
 

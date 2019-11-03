@@ -2,26 +2,30 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LoginCard from "../components/LoginCard";
 import Auth from "../utils/Auth";
+import Landing from "../components/Landing";
+const axios = require("axios");
 //Uses the Auth methods to actually login with the LoginForm Component.
 class Login extends React.Component {
     //Initial boolean to check for authenticated user
 	state = {
         redirectToReferrer: false,
-        username: ""
+        userName: ""
 	}
     /* We need to POST to the API the users info,
         This will get passed down as a prop to the LoginForm */
 	login = (data) => {
-        console.log('Logging in ' + data.username);
-        this.setState({username: data.username})
-		fetch('api/users/login', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			credentials: 'include',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
+		console.log('Logging in ' + data.userName);
+		console.log(data);
+		this.setState({userName: data.userName});
+		axios.post('api/users/login', data)
+		// fetch('api/users/login', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(data),
+		// 	credentials: 'include',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// })
 		.then((response) => {
 			if (response.status === 200) { //All good
 				Auth.authenticate(() => { //Update the boolean and take off the cuffs
@@ -36,7 +40,7 @@ class Login extends React.Component {
     
 
 	render() {
-        const { from } = this.props.location.state || { from: { pathname: "/"+this.state.username+'/trending' } }
+        const { from } = this.props.location.state || { from: { pathname: '/search' } }
 		const { redirectToReferrer } = this.state
 		
 		if (redirectToReferrer) {

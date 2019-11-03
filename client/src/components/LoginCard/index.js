@@ -15,7 +15,7 @@ class LoginCard extends React.Component {
 					onSubmit={(e) => {
 						e.preventDefault();
 						return onLogin({
-							username: this.usernameElem.value,
+							userName: this.usernameElem.value,
 							password: this.passwordElem.value
 						});
 					}}
