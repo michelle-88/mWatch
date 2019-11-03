@@ -30,7 +30,7 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<div>
-                <Landing/>
+                {/* <Landing/> */}
 				<h4>Register a New User</h4>
 				<SignUpCard onRegister={this.register} />
 			</div>

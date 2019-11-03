@@ -15,12 +15,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
-    db.Book
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+
   update: function(req, res) {
     db.Book
       .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -83,5 +78,12 @@ module.exports = {
       }
       res.status(200).send('OK');
     });
+  },
+
+  addToList: function(req, res) {
+    db.User
+      .findOneAndUpdate({userName: "michelle"}, {$push: {watchList: req.body}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
 };
