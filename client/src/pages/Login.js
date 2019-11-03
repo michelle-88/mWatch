@@ -46,6 +46,7 @@ class Login extends React.Component {
         } 
 		return (
 			<div>
+				<Landing/>
 				<LoginCard onLogin={this.login} />
 			</div>
 		)
