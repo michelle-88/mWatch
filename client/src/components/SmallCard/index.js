@@ -12,6 +12,9 @@ function SmallCard(props) {
                 </div>
                 <div className="col-12 col-lg-9">
                     <p className="card-text">{props.summary}</p>
+                    <button type="submit" onClick={() => props.saveShow(props.id, props.name, props.poster, props.summary)} className="btn btn-success">
+                        Add to Watch List
+                    </button>
                 </div>
             </div>
             </div>

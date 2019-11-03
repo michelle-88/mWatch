@@ -10,5 +10,7 @@ router.route("/logn")
     .post(passport.authenticate("local", {failureRedirect: "/login"}), userController.login);
 router.route("/logout")
     .get(userController.logout);
+router.route("/watchlist")
+    .post(userController.addToList);
 
-module.exports = router
+module.exports = router;
