@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
+import TVAPI from "../utils/TVAPI";
+import { Link } from "react-router-dom";
 
 class WatchList extends Component {
     state = {
@@ -38,6 +40,11 @@ class WatchList extends Component {
                     >
                     <Button className="btn btn-danger" onClick={() => this.deleteShow(show._id)}>
                         Remove
+                    </Button>
+                    <Button className="btn btn-info">
+                    <Link className="text-white" to={"/api/users/showdetails/" + show.id}>
+                        View More
+                    </Link>
                     </Button>
                     </SmallCard>
                 ))}
