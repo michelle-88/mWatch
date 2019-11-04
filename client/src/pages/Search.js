@@ -3,6 +3,7 @@ import TVAPI from "../utils/TVAPI";
 import DBAPI from "../utils/DBAPI";
 import SearchForm from "../components/SearchForm";
 import SmallCard from "../components/SmallCard";
+import Button from "../components/Button";
 
 class Search extends Component {
     state = {
@@ -47,8 +48,11 @@ class Search extends Component {
                         name={show.name}
                         poster={show.poster_path}
                         summary={show.overview}
-                        saveShow={this.saveShow}
-                    />
+                    >
+                    <Button className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                        Add to Watch List
+                    </Button>
+                    </SmallCard>
                 ))}
             </div>
         )

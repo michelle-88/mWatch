@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NoMatch from "./pages/NoMatch";
+import WatchList from "./pages/WatchList";
 import { BrowserRouter as Router, Route, Redirect, Link, Switch, withRouter } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/watchlist" component={WatchList} />
         <Route component={NoMatch} />
 
       </Switch>
