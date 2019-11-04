@@ -55,23 +55,33 @@ module.exports = {
     console.log('/register handler', req.body);
     console.log(req.body.userName)
     console.log(req.body.password)
-    db.User.create(req.body, (err, user)=>{
-    // db.User.register(new User({ userName : req.body.userName, password : req.body.password}), (err, user) => {
-      if (err) {
-        console.log("error")
-        console.log(err)
-        return res.status(500).send({ error : err.message });
-      }
-      passport.authenticate('local'),(req, res, () => {
-        req.session.save((err) => {
+    db.User.find({userName: req.body.userName}, (err, data)=>{
+      console.log(data[0].userName)
+      if(data[0].userName === undefined){
+        console.log("user not found");
+        db.User.create(req.body, (err, user)=>{
+        // db.User.register(new User({ userName : req.body.userName, password : req.body.password}), (err, user) => {
           if (err) {
-            //ToDo:log the error and look for an existing user
-              return next(err);
+            console.log("error")
+            console.log(err)
+            return res.status(500).send({ error : err.message });
           }
-          res.send(200,"successful register");
+          passport.authenticate('local'),(req, res, () => {
+            req.session.save((err) => {
+              if (err) {
+                //ToDo:log the error and look for an existing user
+                  return next(err);
+              }
+              res.send(200,"successful register");
+            });
+          });
         });
-      });
+      } else {
+        console.log("user already exists");
+        return false
+      }
     });
+
   },
   login: function(req, res, next) {
     console.log('/login handler');
