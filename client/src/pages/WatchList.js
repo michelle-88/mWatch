@@ -1,0 +1,49 @@
+import React, { Component } from "react";
+import DBAPI from "../utils/DBAPI";
+import SmallCard from "../components/SmallCard";
+import Button from "../components/Button";
+
+class WatchList extends Component {
+    state = {
+        shows: [],
+        username: "michelle"
+    };
+    
+    componentDidMount() {
+        this.loadWatchList();
+    };
+
+    loadWatchList = () => {
+        DBAPI.getWatchList(this.state.username)
+        .then(res => this.setState({ shows: res.data.watchList }))
+        .catch(err => console.log(err));
+    }
+
+    deleteShow = id => {
+        DBAPI.deleteShow(id)
+            .then(res => this.loadWatchList())
+            .catch(err => console.log(err));
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.shows.map(show => (
+                    <SmallCard
+                    key={show.id}
+                    id={show.id}
+                    name={show.name}
+                    poster={show.poster}
+                    summary={show.summary}
+                    >
+                    <Button className="btn btn-danger" onClick={() => this.deleteShow(show._id)}>
+                        Remove
+                    </Button>
+                    </SmallCard>
+                ))}
+            </div>
+        )
+    }
+}
+
+export default WatchList;
