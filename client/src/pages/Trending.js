@@ -5,7 +5,8 @@ import SmallCard from "../components/SmallCard";
 
 class Trending extends Component {
     state = {
-        shows: []
+        shows: [],
+        genres: []
     }
 
     saveShow = (id, name, poster, summary) => {

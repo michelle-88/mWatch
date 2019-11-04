@@ -11,5 +11,9 @@ export default {
   trendingShows: function(){
     return moviedb.miscPopularTvs({}).catch(console.error)
   }
+  // Gets All Genres
+  genreList: function(){
+    return moviedb.genreTvList({}).catch(console.error);
+  }
 
 };
