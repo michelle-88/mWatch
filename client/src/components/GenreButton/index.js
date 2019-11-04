@@ -4,9 +4,11 @@ import React from "react";
 // That way we don't have to define them all individually
 function GenreButton(props) {
   return (
-    <span className="genre-btn" data-id={props.id} role="button" tabIndex="0">
+    <button 
+    onClick={()=>props.searchByGenre(props.id)}
+    className="genre-btn btn btn-primary" data-id={props.id} role="button" tabIndex="0">
       {props.name}
-    </span>
+    </button>
   );
 }
 

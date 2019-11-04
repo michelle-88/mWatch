@@ -2,11 +2,90 @@ import React, { Component } from "react";
 import TVAPI from "../utils/TVAPI";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
+import GenreButton from "../components/GenreButton";
 
 class Trending extends Component {
     state = {
         shows: [],
-        genres: []
+        genres: [
+            {
+              id: 28,
+              name: "Action"
+            },
+            {
+              id: 12,
+              name: "Adventure"
+            },
+            {
+              id: 16,
+              name: "Animation"
+            },
+            {
+              id: 35,
+              name: "Comedy"
+            },
+            {
+              id: 80,
+              name: "Crime"
+            },
+            {
+              id: 99,
+              name: "Documentary"
+            },
+            {
+              id: 18,
+              name: "Drama"
+            },
+            {
+              id: 10751,
+              name: "Family"
+            },
+            {
+              id: 14,
+              name: "Fantasy"
+            },
+            {
+              id: 36,
+              name: "History"
+            },
+            {
+              id: 27,
+              name: "Horror"
+            },
+            {
+              id: 10402,
+              name: "Music"
+            },
+            {
+              id: 9648,
+              name: "Mystery"
+            },
+            {
+              id: 10749,
+              name: "Romance"
+            },
+            {
+              id: 878,
+              name: "Science Fiction"
+            },
+            {
+              id: 10770,
+              name: "TV Movie"
+            },
+            {
+              id: 53,
+              name: "Thriller"
+            },
+            {
+              id: 10752,
+              name: "War"
+            },
+            {
+              id: 37,
+              name: "Western"
+            }
+          ],
+          query: ""
     }
 
     saveShow = (id, name, poster, summary) => {
@@ -21,20 +100,50 @@ class Trending extends Component {
     }
 
     componentDidMount(){
-        this.trendingShows()
+        this.trendingShows();
+        // this.genreList();
     }
 
     // function that shows trending shows
     trendingShows = event => {
         TVAPI.trendingShows()
-            .then(res => this.setState({ shows: res.results}))
+            .then(res => this.setState({ shows: res.results }))
             .catch(err => console.log(err));
+    };
+    // genreList = event =>{
+    //     TVAPI.genreList()
+    //     .then(res => {
+    //         console.log(res.results)
+    //         this.setState({ genres: res.results })
+    //     })
+    //     .catch(err => console.log(err))
+    // }
+    searchByGenre = id => {
+        console.log("searching genre")
+        TVAPI.trendingGenre(id)
+            .then(res => {
+                console.log(res.results)
+                this.setState({ shows: res.results})
+            })
+            .catch(err => console.log(err));
+    };
+
+    handleInputChange = event => {
+        this.setState({ query: event.target.value });
     };
 
     render() {
         return (
             <div>
                 <h1>Trending Now</h1>
+                {this.state.genres.map(genre=>(
+                    <GenreButton
+                        searchByGenre={this.searchByGenre}
+                        key={genre.id}
+                        id={genre.id}
+                        name={genre.name}
+                    />
+                ))}
                 {this.state.shows.map(show => (
                     <SmallCard 
                         key={show.id}
