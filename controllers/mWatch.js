@@ -86,4 +86,18 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  getList: function(req, res) {
+    db.User
+      .findOne({userName: req.params.username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  removeFromList: function(req, res) {
+    db.User
+      .update({}, { $pull: { watchList: { _id: req.params.id } } })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 };

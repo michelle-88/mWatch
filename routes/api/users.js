@@ -12,5 +12,9 @@ router.route("/logout")
     .get(userController.logout);
 router.route("/watchlist")
     .post(userController.addToList);
+router.route("/:username")
+    .get(userController.getList);
+router.route("/watchlist/:id")
+    .delete(userController.removeFromList);
 
 module.exports = router;
