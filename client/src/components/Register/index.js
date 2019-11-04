@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import RegisterForm from "../RegisterForm";
 import Auth from "../../utils/Auth";
+import Landing from "../../components/Landing";
 //The component for doing the actual signup of the User
 class Register extends React.Component {
 	state = {
@@ -44,6 +45,7 @@ class Register extends React.Component {
 		}
 		return (
 			<div>
+				<Landing/>
 				<h4>Register a New User</h4>
 				<RegisterForm onRegister={this.register} />
 			</div>
