@@ -1,35 +1,88 @@
-import React from "react";
-import Search from "./pages/Search";
+import React from 'react'
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+  Redirect,
+  Switch,
+	withRouter
+} from 'react-router-dom';
+import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import NoMatch from "./pages/NoMatch";
-import DetailsPage from "./pages/Details";
-import Trending from "./pages/Trending"
-import WatchList from "./pages/WatchList";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import PublicRoute from "./pages/PublicRoute";
+import ProtectedRoute from "./pages/PublicRoute";
+import Trending from "./pages/Trending";
+import './App.css';
 
-import { BrowserRouter as Router, Route, Redirect, Link, Switch, withRouter } from "react-router-dom";
+//I want to add some basic inline styling here, even though we are bringing in styles
+const listStyle = {
+	color: 'cornflowerblue',
+	listStyle:'none'
+  };
+//Now we have all the stuff we need .. let's render some components with the Router
+const AuthExample = () => (
+	<Router>
+		<div>
+      		<Nav className="App-header"/>
 
-function App() {
-  return (
-    <Router>
-    <div>
-      <Nav />
-      <Switch>
-        <Route exact path="/trending" component={Trending}/>
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/watchlist" component={WatchList} />
-        <Route exact path="/api/users/showdetails/:id" component={DetailsPage} />
-        <Route component={NoMatch} />
+				<AuthButton/>
+				{/* <ul style={listStyle}>
+					<li><Link to="/public">Public Page</Link></li>
+					<li><Link to="/protected">Protected Page</Link></li>
+					<li><Link to="/register">Register a New User</Link></li>
+				</ul> */}
+				<Switch>
+					<Route path="/public" component={PublicRoute}/>
+					<Route path="/login" component={Login}/>
+					<Route path="/register" component={Register}/>
+					<PrivateRoute path="/:username/trending" component={Trending}/>
+					{/* <Route component={NoMatch} /> */}
+				</Switch>
 
-      </Switch>
-    </div>
-    </Router>
-  );
-}
+		</div>
+	</Router>
+)
 
-export default App;
+
+//Authbutton component / withRouter is imported from react-router
+const AuthButton = withRouter(({ history }) => (
+	Auth.isAuthenticated ? (
+		<div className="container">
+			<p>Success! You are Logged In!</p>
+			<button className="btn btn-danger" 
+				onClick={() => {
+					Auth.signout(() => history.push('/'))
+				}}>
+				Sign out
+			</button>
+		</div>
+	) : (
+		<p>You are not logged in.</p>
+	)
+))
+
+// This is the private route component this checks for an authorized user here
+const PrivateRoute = ({ component: Component, ...rest }) => (
+	<Route {...rest} render={props => (
+		Auth.isAuthenticated ? (
+			<Component {...props}/>
+		) : (
+			<Redirect to={{
+				pathname: '/login',
+				state: { from: props.location }
+			}}/>
+		)
+	)}/>
+)
+
+
+
+
+
+
+
+
+export default AuthExample
+

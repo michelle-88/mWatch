@@ -1,20 +1,33 @@
 const router = require("express").Router();
-const passport = require("passport");
-const userController = require("../../controllers/mWatch");
-
+const passport = require('passport');
+const usersController = require("../../controllers/usersController");
+// Matches with "/api/users"
 router.route("/")
-    .get(userController.getUser);
-router.route("/signup")
-    .post(userController.register);
-router.route("/logn")
-    .post(passport.authenticate("local", {failureRedirect: "/login"}), userController.login);
+  .get(usersController.getUser);
+
+/* Authentication Routes */
+router.route("/register")
+  .post(usersController.register);
+
+router.route("/login")
+  .post(passport.authenticate('local', { failureRedirect: '/?error=LoginError'}), usersController.login);
+
 router.route("/logout")
-    .get(userController.logout);
+  .get(usersController.logout);
+
 router.route("/watchlist")
-    .post(userController.addToList);
+  .post(usersController.addToList);
 router.route("/:username")
-    .get(userController.getList);
+  .get(usersController.getList);
 router.route("/watchlist/:id")
-    .delete(userController.removeFromList);
+  .delete(usersController.removeFromList);
+
+
+// Matches with "/api/users/:id"
+
+/* Testing Endpoint */
+router
+  .route("/ping")
+  .get(usersController.test);
 
 module.exports = router;

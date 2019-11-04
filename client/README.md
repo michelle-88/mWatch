@@ -342,7 +342,7 @@ npm install --save react-router
 Alternatively you may use `yarn`:
 
 ```sh
-npm install react-router
+yarn add react-router
 ```
 
 This works for any library, not just `react-router`.
