@@ -9,7 +9,7 @@ function Home(){
             <h3></h3>
             <div className="text-center">
                 <button className="btn btn-lg"><Link to="/login">Login</Link></button>
-                <button className="btn btn-lg"><Link to="/signup">Sign Up</Link></button>
+                <button className="btn btn-lg"><Link to="/register">Register</Link></button>
             </div>
         </div>
 

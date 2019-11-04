@@ -15,6 +15,7 @@ import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/PublicRoute";
 import Trending from "./pages/Trending";
 import './App.css';
+import Home from "./pages/Home"
 
 //I want to add some basic inline styling here, even though we are bringing in styles
 const listStyle = {
@@ -34,7 +35,7 @@ const AuthExample = () => (
 					<li><Link to="/register">Register a New User</Link></li>
 				</ul> */}
 				<Switch>
-					<Route path="/public" component={PublicRoute}/>
+					<Route exact path="/" component={Home}/>
 					<Route path="/login" component={Login}/>
 					<Route path="/register" component={Register}/>
 					<PrivateRoute path="/:username/trending" component={Trending}/>
