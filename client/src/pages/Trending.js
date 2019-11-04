@@ -84,8 +84,7 @@ class Trending extends Component {
               id: 37,
               name: "Western"
             }
-          ],
-          query: ""
+          ]
     }
 
     saveShow = (id, name, poster, summary) => {
@@ -100,24 +99,9 @@ class Trending extends Component {
     }
 
     componentDidMount(){
-        this.trendingShows();
-        // this.genreList();
+        this.searchByGenre();
     }
 
-    // function that shows trending shows
-    trendingShows = event => {
-        TVAPI.trendingShows()
-            .then(res => this.setState({ shows: res.results }))
-            .catch(err => console.log(err));
-    };
-    // genreList = event =>{
-    //     TVAPI.genreList()
-    //     .then(res => {
-    //         console.log(res.results)
-    //         this.setState({ genres: res.results })
-    //     })
-    //     .catch(err => console.log(err))
-    // }
     searchByGenre = id => {
         console.log("searching genre")
         TVAPI.trendingGenre(id)
@@ -126,10 +110,6 @@ class Trending extends Component {
                 this.setState({ shows: res.results})
             })
             .catch(err => console.log(err));
-    };
-
-    handleInputChange = event => {
-        this.setState({ query: event.target.value });
     };
 
     render() {

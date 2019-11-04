@@ -7,10 +7,6 @@ export default {
   searchShows: function(query) {
     return moviedb.searchTv({ query: query }).catch(console.error);
   },
-  // Gets Trending TV shows
-  trendingShows: function(){
-    return moviedb.miscPopularTvs({}).catch(console.error);
-  },
   // Gets Trending TV shows by genre
   trendingGenre: function(genre){
     return moviedb.discoverTv({with_genres: genre, page: 1 }).catch(console.error);
