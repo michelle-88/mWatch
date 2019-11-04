@@ -7,5 +7,9 @@ export default {
   searchShows: function(query) {
     return moviedb.searchTv({ query: query }).catch(console.error)
   },
+  // Gets Trending TV shows
+  trendingShows: function(){
+    return moviedb.miscPopularTvs({}).catch(console.error)
+  }
 
 };

@@ -3,7 +3,7 @@ import TVAPI from "../utils/TVAPI";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 
-class Trending extends component {
+class Trending extends Component {
     state = {
         shows: []
     }
@@ -19,9 +19,21 @@ class Trending extends component {
         .catch(err => console.log(err));
     }
 
+    componentDidMount(){
+        this.trendingShows()
+    }
+
+    // function that shows trending shows
+    trendingShows = event => {
+        TVAPI.trendingShows()
+            .then(res => this.setState({ shows: res.results}))
+            .catch(err => console.log(err));
+    };
+
     render() {
         return (
             <div>
+                <h1>Trending Now</h1>
                 {this.state.shows.map(show => (
                     <SmallCard 
                         key={show.id}
