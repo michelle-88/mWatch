@@ -10,7 +10,7 @@ export default {
         return axios.get("/api/users/watchlist/" + username);
     },
     // Delete a show from user's Watch List
-    deleteShow: function(id, username) {
+    deleteShow: function(username, id) {
         return axios.delete("/api/users/watchlist/" + username + "/" + id);
     }
 

@@ -74,7 +74,7 @@ module.exports = {
 	
 	removeFromList: function(req, res) {
 		Account
-		  .findOneAndUpdate({username: req.params.username}, {$pull: {watchList: req.params.id}})
+		  .findOneAndUpdate({username: req.params.username}, {$pull: {watchList: {_id: req.params.id}}})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	}
