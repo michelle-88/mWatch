@@ -4,6 +4,9 @@ import DBAPI from "../utils/DBAPI";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
+import PrivateNav from "../components/PrivateNav";
+import {Login, usernameTransfer} from "../components/Login";
+
 
 class Trending extends Component {
     state = {
@@ -91,7 +94,7 @@ class Trending extends Component {
     
 
     saveShow = (id, name, poster, summary) => {
-        DBAPI.saveShow({
+        DBAPI.saveShow(usernameTransfer, {
           id: id,
           name: name,
           poster: poster,

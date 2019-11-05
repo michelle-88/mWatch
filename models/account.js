@@ -5,7 +5,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const Account = new Schema({
     username: String,
     password: String,
-    watchList:[{
+    watchList: [{
         id: Number,
         name: String,
         poster: String,

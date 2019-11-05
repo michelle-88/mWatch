@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
-import Login from "./components/Login";
+import {Login, usernameTransfer} from "./components/Login";
 import Register from "./components/Register";
 // import PublicRoute from "./pages/PublicRoute";
 // import ProtectedRoute from "./pages/PublicRoute";
@@ -25,8 +25,11 @@ const listStyle = {
 	listStyle:'none'
   };
 //Now we have all the stuff we need .. let's render some components with the Router
-const AuthExample = () => (
+class App extends React.Component {
+	render() {
+		return (
 	<Router>
+
 		<div className="bg-dark">
 			<Nav className="App-header"/>
 			{/* <AuthButton/> */}
@@ -44,9 +47,13 @@ const AuthExample = () => (
 				<PrivateRoute exact path="/watchlist" component={WatchList}/>
 				{/* <Route component={NoMatch} /> */}
 			</Switch>
+
 		</div>
 	</Router>
-)
+		)
+	}
+}
+
 
 //Authbutton component / withRouter is imported from react-router
 const AuthButton = withRouter(({ history }) => (
@@ -79,5 +86,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 	)}/>
 )
 
-export default AuthExample
+export default App;
 

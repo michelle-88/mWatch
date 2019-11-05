@@ -4,6 +4,9 @@ import DBAPI from "../utils/DBAPI";
 import SearchForm from "../components/SearchForm";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
+import PrivateNav from "../components/PrivateNav";
+import {Login, usernameTransfer} from "../components/Login";
+
 
 class Search extends Component {
     state = {
@@ -23,7 +26,7 @@ class Search extends Component {
     };
 
     saveShow = (id, name, poster, summary) => {
-      DBAPI.saveShow({
+      DBAPI.saveShow(usernameTransfer, {
         id: id,
         name: name,
         poster: poster,
