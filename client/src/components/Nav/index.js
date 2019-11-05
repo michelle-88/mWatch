@@ -1,5 +1,13 @@
 import React from "react";
-import "./style.css"
+import "./style.css";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+  Redirect,
+  Switch,
+	withRouter
+} from 'react-router-dom';
 
 function Nav() {
   return (
@@ -10,15 +18,15 @@ function Nav() {
         </a>
       </span>
       <span className="ml-5 pl-5">
-        <a className="navbar-brand text-dark float-right" href="/trending">
+        <Link className="navbar-brand text-dark float-right" to="/trending">
           Trending
-        </a>
-        <a className="navbar-brand text-dark float-right" href="/watchlist">
+        </Link>
+        <Link className="navbar-brand text-dark float-right" to="/watchlist">
           Watch List
-        </a>
-        <a className="navbar-brand text-dark float-right" href="/search">
+        </Link>
+        <Link className="navbar-brand text-dark float-right" to="/search">
           Search
-        </a>
+        </Link>
       </span>
     </nav>
   );

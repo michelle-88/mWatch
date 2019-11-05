@@ -4,7 +4,6 @@ import DBAPI from "../utils/DBAPI";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
-import PrivateNav from "../components/PrivateNav";
 import {Login, usernameTransfer} from "../components/Login";
 
 

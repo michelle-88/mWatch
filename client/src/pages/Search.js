@@ -4,7 +4,6 @@ import DBAPI from "../utils/DBAPI";
 import SearchForm from "../components/SearchForm";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
-import PrivateNav from "../components/PrivateNav";
 import {Login, usernameTransfer} from "../components/Login";
 
 
