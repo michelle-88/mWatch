@@ -12,7 +12,7 @@ const Auth = {
 			credentials: 'include'
 		})
 		.then((res) => {
-			if(res.status === 500){
+			if(res.status !== 200){
 				return false
 			}
 			this.isAuthenticated = true

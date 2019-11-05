@@ -3,7 +3,6 @@ const passport = require('passport');
 
 module.exports = {
     getUser: function(req, res, next) {
-		console.log(req.session.passport.user)
         if(req.session.passport.user) {
             return res.status(200).json({
                 user: req.session.passport.user,
@@ -15,7 +14,8 @@ module.exports = {
                 authenticated: false
             });
         }
-    },
+	},
+	
     register: function(req, res, next) {
         console.log('/register handler', req.body);
 		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
@@ -33,7 +33,7 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
-        console.log('/login handler');
+		console.log('/login handler');
 		req.session.save((err) => {
 			if (err) {
 				return next(err);
@@ -42,12 +42,14 @@ module.exports = {
 		});
     },
     logout: function(req, res, next) {
-        req.logout();
+		req.logout();
+		console.log("loged out")
 		req.session.save((err) => {
+			console.log(req.session)
 			if (err) {
 				return next(err);
 			}
-			res.status(200).send('OK');
+			res.status(200).send('OK')
 		});
     },
     

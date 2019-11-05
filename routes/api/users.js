@@ -13,7 +13,7 @@ router.route("/login")
   .post(passport.authenticate('local', { failureRedirect: '/login'}), usersController.login);
 
 router.route("/logout")
-  .get(usersController.logout);
+  .post(usersController.logout);
 
 router.route("/watchlist/:username")
   .post(usersController.addToList);
