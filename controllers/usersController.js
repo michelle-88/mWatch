@@ -19,37 +19,35 @@ module.exports = {
     register: function(req, res, next) {
         console.log('/register handler', req.body);
 		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
-				if (err) {
-					return res.status(500).send({ error : err.message });
-				}
-
-				passport.authenticate('local')(req, res, () => {
-						req.session.save((err) => {
-								if (err) {
-										return next(err);
-								}
-
-								res.status(200).send('OK');
-						});
+			if (err) {
+				return res.status(500).send({ error : err.message });
+			}
+			passport.authenticate('local')(req, res, () => {
+				req.session.save((err) => {
+					if (err) {
+						return next(err);
+					}
+					res.status(200).send('OK');
 				});
+			});
 		});
     },
     login: function(req, res, next) {
         console.log('/login handler');
 		req.session.save((err) => {
-				if (err) {
-						return next(err);
-				}
-				res.status(200).send('OK');
+			if (err) {
+				return next(err);
+			}
+			res.status(200).send('OK');
 		});
     },
     logout: function(req, res, next) {
         req.logout();
 		req.session.save((err) => {
-				if (err) {
-						return next(err);
-				}
-				res.status(200).send('OK');
+			if (err) {
+				return next(err);
+			}
+			res.status(200).send('OK');
 		});
     },
     

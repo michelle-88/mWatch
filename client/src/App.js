@@ -32,7 +32,7 @@ class App extends React.Component {
 
 		<div className="bg-dark">
 			<Nav className="App-header"/>
-			{/* <AuthButton/> */}
+			<AuthButton/>
 			{/* <ul style={listStyle}>
 				<li><Link to="/public">Public Page</Link></li>
 				<li><Link to="/protected">Protected Page</Link></li>
