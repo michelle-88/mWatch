@@ -4,8 +4,6 @@ import DBAPI from "../utils/DBAPI";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
-import PrivateNav from "../components/PrivateNav";
-
 
 class Trending extends Component {
     state = {
@@ -122,9 +120,6 @@ class Trending extends Component {
     render() {
         return (
             <div>
-                <PrivateNav
-                  username={this.state.username}
-                />
                 <h1>Trending Now</h1>
                 {this.state.genres.map(genre=>(
                     <GenreButton

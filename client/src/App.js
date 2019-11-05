@@ -27,23 +27,23 @@ const listStyle = {
 //Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
 	<Router>
-		<div>
-				<AuthButton/>
-				{/* <ul style={listStyle}>
-					<li><Link to="/public">Public Page</Link></li>
-					<li><Link to="/protected">Protected Page</Link></li>
-					<li><Link to="/register">Register a New User</Link></li>
-				</ul> */}
-				<Switch>
-					<Route exact path="/" component={Home}/>
-					<Route exact path="/login" component={Login}/>
-					<Route exact path="/register" component={Register}/>
-					<PrivateRoute exact path="/trending" component={Trending}/>
-					<PrivateRoute exact path="/search" component={Search}/>
-					<PrivateRoute exact path="/watchlist" component={WatchList}/>
-					{/* <Route component={NoMatch} /> */}
-				</Switch>
-
+		<div className="bg-dark">
+			<Nav className="App-header"/>
+			<AuthButton/>
+			{/* <ul style={listStyle}>
+				<li><Link to="/public">Public Page</Link></li>
+				<li><Link to="/protected">Protected Page</Link></li>
+				<li><Link to="/register">Register a New User</Link></li>
+			</ul> */}
+			<Switch>
+				<Route exact path="/" component={Home}/>
+				<Route exact path="/login" component={Login}/>
+				<Route exact path="/register" component={Register}/>
+				<PrivateRoute exact path="/trending" component={Trending}/>
+				<PrivateRoute exact path="/search" component={Search}/>
+				<PrivateRoute exact path="/watchlist" component={WatchList}/>
+				{/* <Route component={NoMatch} /> */}
+			</Switch>
 		</div>
 	</Router>
 )
@@ -51,8 +51,8 @@ const AuthExample = () => (
 //Authbutton component / withRouter is imported from react-router
 const AuthButton = withRouter(({ history }) => (
 	Auth.isAuthenticated ? (
-		<div className="container">
-			<p>Success! You are Logged In!</p>
+		<div className="container bg-dark">
+			<p className="text-white">Success! You are Logged In!</p>
 			<button className="btn btn-danger" 
 				onClick={() => {
 					Auth.signout(() => history.push('/'))
@@ -61,7 +61,7 @@ const AuthButton = withRouter(({ history }) => (
 			</button>
 		</div>
 	) : (
-		<p>You are not logged in.</p>
+		<p className="text-white">You are not logged in.</p>
 	)
 ))
 
