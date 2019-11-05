@@ -11,11 +11,13 @@ import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import PublicRoute from "./pages/PublicRoute";
-import ProtectedRoute from "./pages/PublicRoute";
+// import PublicRoute from "./pages/PublicRoute";
+// import ProtectedRoute from "./pages/PublicRoute";
 import Trending from "./pages/Trending";
-import './App.css';
+import Search from "./pages/Search";
+import WatchList from "./pages/WatchList";
 import Home from "./pages/Home"
+import './App.css';
 
 //I want to add some basic inline styling here, even though we are bringing in styles
 const listStyle = {
@@ -26,8 +28,6 @@ const listStyle = {
 const AuthExample = () => (
 	<Router>
 		<div>
-      		<Nav className="App-header"/>
-
 				<AuthButton/>
 				{/* <ul style={listStyle}>
 					<li><Link to="/public">Public Page</Link></li>
@@ -36,16 +36,17 @@ const AuthExample = () => (
 				</ul> */}
 				<Switch>
 					<Route exact path="/" component={Home}/>
-					<Route path="/login" component={Login}/>
-					<Route path="/register" component={Register}/>
-					<PrivateRoute path="/:username/trending" component={Trending}/>
+					<Route exact path="/login" component={Login}/>
+					<Route exact path="/register" component={Register}/>
+					<PrivateRoute exact path="/trending" component={Trending}/>
+					<PrivateRoute exact path="/search" component={Search}/>
+					<PrivateRoute exact path="/watchlist" component={WatchList}/>
 					{/* <Route component={NoMatch} /> */}
 				</Switch>
 
 		</div>
 	</Router>
 )
-
 
 //Authbutton component / withRouter is imported from react-router
 const AuthButton = withRouter(({ history }) => (
@@ -77,13 +78,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 		)
 	)}/>
 )
-
-
-
-
-
-
-
 
 export default AuthExample
 

@@ -4,6 +4,7 @@ import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
 import TVAPI from "../utils/TVAPI";
 import { Link } from "react-router-dom";
+import PrivateNav from "../components/PrivateNav";
 
 class WatchList extends Component {
     state = {
@@ -30,6 +31,7 @@ class WatchList extends Component {
     render() {
         return (
             <div>
+                <PrivateNav/>
                 {this.state.shows.map(show => (
                     <SmallCard
                     key={show.id}
