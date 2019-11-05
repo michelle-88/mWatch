@@ -4,7 +4,6 @@ import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
 import TVAPI from "../utils/TVAPI";
 import { Link } from "react-router-dom";
-import PrivateNav from "../components/PrivateNav";
 import {Login, usernameTransfer} from "../components/Login";
 
 
