@@ -19,7 +19,7 @@ router.route("/watchlist/:username")
   .post(usersController.addToList);
 router.route("/watchlist/:username")
   .get(usersController.getList);
-router.route("/watchlist/:id")
+router.route("/watchlist/:username/:id")
   .delete(usersController.removeFromList);
 
 
