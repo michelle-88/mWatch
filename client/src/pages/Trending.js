@@ -3,6 +3,8 @@ import TVAPI from "../utils/TVAPI";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
+import PrivateNav from "../components/PrivateNav";
+
 
 class Trending extends Component {
     state = {
@@ -84,8 +86,10 @@ class Trending extends Component {
               id: 37,
               name: "Western"
             }
-          ]
+          ],
+          username: ""
     }
+    
 
     saveShow = (id, name, poster, summary) => {
         DBAPI.saveShow({
@@ -99,6 +103,8 @@ class Trending extends Component {
     }
 
     componentDidMount(){
+      console.log(this.props.match.params.username)
+      this.setState({username: this.props.match.params.username})
         this.searchByGenre();
     }
 
@@ -115,6 +121,9 @@ class Trending extends Component {
     render() {
         return (
             <div>
+                <PrivateNav
+                  username={this.state.username}
+                />
                 <h1>Trending Now</h1>
                 {this.state.genres.map(genre=>(
                     <GenreButton
