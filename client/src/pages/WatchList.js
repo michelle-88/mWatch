@@ -23,7 +23,7 @@ class WatchList extends Component {
     }
 
     deleteShow = id => {
-        DBAPI.deleteShow(id)
+        DBAPI.deleteShow(id, usernameTransfer)
             .then(res => this.loadWatchList())
             .catch(err => console.log(err));
     }

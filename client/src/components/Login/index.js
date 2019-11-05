@@ -17,24 +17,30 @@ class Login extends React.Component {
 		console.log('Logging in ' + data.username);
 		usernameTransfer = data.username
 		this.setState({ username: data.username });
-		fetch('api/users/login', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			credentials: 'include',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
-		.then((response) => {
-			if (response.status === 200) { //All good
-				Auth.authenticate(() => { //Update the boolean and take off the cuffs
-					this.setState({ redirectToReferrer: true })
-				});
-			}
-		})
-		.catch((err) => {// No beuno, kick them
-			console.log('Error logging in.', err);
-		});
+		if(data.username !== "" || data.password !== ""){
+			fetch('api/users/login', {
+				method: 'POST',
+				body: JSON.stringify(data),
+				credentials: 'include',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+			})
+			.then((response) => {
+				if (response.status === 200) { //All good
+					Auth.authenticate(() => { //Update the boolean and take off the cuffs
+						this.setState({ redirectToReferrer: true })
+					});
+				}
+			})
+			.catch((err) => {// No beuno, kick them
+				console.log('Error logging in.', err);
+			});
+		} else {
+			console.log("please enter a username and password");
+			return false
+		}
+
 	}
 
 	render() {
