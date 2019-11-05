@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import PrivateNav from "../components/PrivateNav";
 import {Login, usernameTransfer} from "../components/Login";
 
+
 class Search extends Component {
     state = {
         query: "",
@@ -38,7 +39,6 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <PrivateNav/>
                 <SearchForm 
                     query={this.state.query}
                     handleInputChange={this.handleInputChange}

@@ -24,10 +24,10 @@ class RegisterForm extends React.Component {
 						});
 					}}
 				>
-					<div className="form-group">
+					<div className="form-group container">
 						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
 						<input className="form-control"  ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
-						<button className="btn btn btn-primary" type='submit'>Submit</button>
+						<button className="btn btn-white text-dark" type='submit'>Register</button>
 					</div>
 				</form>
 			

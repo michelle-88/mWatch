@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import PrivateNav from "../components/PrivateNav";
 import {Login, usernameTransfer} from "../components/Login";
 
+
 class WatchList extends Component {
     state = {
         shows: []
@@ -31,7 +32,6 @@ class WatchList extends Component {
     render() {
         return (
             <div>
-                <PrivateNav/>
                 {this.state.shows.map(show => (
                     <SmallCard
                     key={show.id}

@@ -44,9 +44,9 @@ class Register extends React.Component {
 			)
 		}
 		return (
-			<div>
+			<div className="bg-dark">
 				<Landing/>
-				<h4>Register a New User</h4>
+				{/* <h4 className="text-white">Register a New User</h4> */}
 				<RegisterForm onRegister={this.register} />
 			</div>
 		)

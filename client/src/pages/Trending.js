@@ -123,9 +123,6 @@ class Trending extends Component {
     render() {
         return (
             <div>
-                <PrivateNav
-                  username={this.state.username}
-                />
                 <h1>Trending Now</h1>
                 {this.state.genres.map(genre=>(
                     <GenreButton
