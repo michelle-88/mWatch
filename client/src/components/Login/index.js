@@ -8,15 +8,13 @@ let usernameTransfer = "";
 class Login extends React.Component {
     //Initial boolean to check for authenticated user
 	state = {
-		redirectToReferrer: false,
-		username: ""
+		redirectToReferrer: false
 	}
     /* We need to POST to the API the users info,
         This will get passed down as a prop to the LoginForm */
 	login = (data) => {
 		console.log('Logging in ' + data.username);
 		usernameTransfer = data.username
-		this.setState({ username: data.username });
 		fetch('api/users/login', {
 			method: 'POST',
 			body: JSON.stringify(data),
