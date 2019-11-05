@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TVAPI from "../utils/TVAPI";
 import DBAPI from "../utils/DBAPI";
+import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
 import PrivateNav from "../components/PrivateNav";
@@ -140,8 +141,12 @@ class Trending extends Component {
                         name={show.name}
                         poster={show.poster_path}
                         summary={show.overview}
-                        saveShow={this.saveShow}
-                    />
+
+                    >
+                    <Button className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                        Add to Watch List
+                    </Button>
+                    </SmallCard>
                 ))}
             </div>
         )
