@@ -30,6 +30,7 @@ export default {
       "r":"json"
       }
       })
+      .then(res => console.log(res))
       .catch((error)=>{
         console.log(error)
       })

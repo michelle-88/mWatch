@@ -31,8 +31,11 @@ class Search extends Component {
         poster: poster,
         summary: summary
       })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(TVAPI.getImdbID(id))
+    //   .then(res => console.log(res.imdb_id))
+    //   .then(res => TVAPI.getImdbInfo(res.imdb_id))
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
     }
 
     render() {

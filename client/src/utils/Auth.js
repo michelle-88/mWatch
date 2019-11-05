@@ -8,7 +8,7 @@ const Auth = {
 	authenticate(cb) {
 		// req.user on backend will contain user info if
 		// this person has credentials that are valid
-		fetch('api/users/user', {
+		fetch('api/users', {
 			credentials: 'include'
 		})
 		.then((res) => {
