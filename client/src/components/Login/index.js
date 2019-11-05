@@ -9,15 +9,12 @@ class Login extends React.Component {
     //Initial boolean to check for authenticated user
 	state = {
 		redirectToReferrer: false,
-		username: ""
 	}
     /* We need to POST to the API the users info,
         This will get passed down as a prop to the LoginForm */
 	login = (data) => {
 		console.log('Logging in ' + data.username);
 		usernameTransfer = data.username
-		this.setState({ username: data.username });
-		if(data.username !== "" || data.password !== ""){
 			fetch('api/users/login', {
 				method: 'POST',
 				body: JSON.stringify(data),
@@ -36,11 +33,6 @@ class Login extends React.Component {
 			.catch((err) => {// No beuno, kick them
 				console.log('Error logging in.', err);
 			});
-		} else {
-			console.log("please enter a username and password");
-			return false
-		}
-
 	}
 
 	render() {
