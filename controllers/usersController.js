@@ -1,4 +1,5 @@
 const Account = require("../models/account");
+const PeanutGallery = require("../models/peanutGallery");
 const passport = require('passport');
 
 module.exports = {
@@ -78,6 +79,12 @@ module.exports = {
 		  .findOneAndUpdate({username: req.params.username}, {$pull: {watchList: {_id: req.params.id}}})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
-	}
+	},
 
+	addToPeanutGallery: function(req, res) {
+		PeanutGallery
+		.create(req.body)
+		.then(dbModel => console.log(dbModel))
+		.catch(err => res.status(422).json(err));
+	}
 };

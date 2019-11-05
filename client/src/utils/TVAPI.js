@@ -1,4 +1,5 @@
 // require("dotenv").config();
+import DBAPI from "../utils/DBAPI";
 const MovieDb = require('moviedb-promise');
 const moviedb = new MovieDb('0faa87ddbbef0c9919c7bc4cce783c37');
 const axios = require('axios');
@@ -14,7 +15,9 @@ export default {
   },
   // Gets IMDb id for a specific show so API call can be made to IMDb API
   getImdbID: function(id) {
-    return moviedb.tvExternalIds({ id: id }).catch(console.error);
+    return moviedb.tvExternalIds({ id: id })
+      .then(res => this.getImdbInfo(res.imdb_id))
+      .catch(console.error);
   },
   // Get detailed info from IMDb about particular show
   getImdbInfo: function(imdbId) {
@@ -30,7 +33,18 @@ export default {
       "r":"json"
       }
       })
-      .then(res => console.log(res))
+      .then(res => DBAPI.addToPeanutGallery({
+        imdbID: res.data.imdbID,
+        title: res.data.Title,
+        posterURL: res.data.Poster,
+        plot: res.data.Plot,
+        actors: res.data.Actors,
+        genre: res.data.Genre,
+        rated: res.data.Rated,
+        released: res.data.Released,
+        writer: res.data.Writer,
+        rating: res.data.imdbRating
+      }))
       .catch((error)=>{
         console.log(error)
       })

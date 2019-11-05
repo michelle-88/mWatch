@@ -12,6 +12,10 @@ export default {
     // Delete a show from user's Watch List
     deleteShow: function(username, id) {
         return axios.delete("/api/users/watchlist/" + username + "/" + id);
+    },
+    // Save new show in Peanut Gallery with details
+    addToPeanutGallery: function(showData) {
+        return axios.post("/api/users/peanutgallery", showData);
     }
 
 };

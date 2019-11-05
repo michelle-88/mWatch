@@ -21,8 +21,8 @@ router.route("/watchlist/:username")
   .get(usersController.getList);
 router.route("/watchlist/:username/:id")
   .delete(usersController.removeFromList);
-
-
+router.route("/peanutgallery")
+  .post(usersController.addToPeanutGallery)
 // Matches with "/api/users/:id"
 
 /* Testing Endpoint */
