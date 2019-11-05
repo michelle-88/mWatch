@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import RegisterForm from "../RegisterForm";
 import Auth from "../../utils/Auth";
 import Landing from "../../components/Landing";
+
 //The component for doing the actual signup of the User
 class Register extends React.Component {
 	state = {
@@ -12,7 +13,6 @@ class Register extends React.Component {
 
 	register = (data) => {
 		console.log('Signing up ' + data.username);
-		this.setState({ username: data.username });
 		fetch('api/users/register', {
 			method: 'POST',
 			body: JSON.stringify(data),
@@ -35,7 +35,7 @@ class Register extends React.Component {
 	}
 
 	render() {
-		const { from } = this.props.location.state || { from: { pathname: '/trending' } }
+		const { from } = this.props.location.state || { from: { pathname: '/login' } }
 		const { redirectToReferrer } = this.state
 		
 		if (redirectToReferrer) {
@@ -53,4 +53,4 @@ class Register extends React.Component {
 	}
 }
 
-export default Register
+export default Register;
