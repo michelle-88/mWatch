@@ -13,7 +13,7 @@ router.route("/login")
   .post(passport.authenticate('local', { failureRedirect: '/login'}), usersController.login);
 
 router.route("/logout")
-  .get(usersController.logout);
+  .post(usersController.logout);
 
 router.route("/watchlist/:username")
   .post(usersController.addToList);
@@ -21,8 +21,8 @@ router.route("/watchlist/:username")
   .get(usersController.getList);
 router.route("/watchlist/:username/:id")
   .delete(usersController.removeFromList);
-
-
+router.route("/peanutgallery")
+  .post(usersController.addToPeanutGallery)
 // Matches with "/api/users/:id"
 
 /* Testing Endpoint */
