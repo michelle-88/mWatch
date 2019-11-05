@@ -15,9 +15,9 @@ router.route("/login")
 router.route("/logout")
   .get(usersController.logout);
 
-router.route("/watchlist")
+router.route("/watchlist/:username")
   .post(usersController.addToList);
-router.route("/:username")
+router.route("/watchlist/:username")
   .get(usersController.getList);
 router.route("/watchlist/:id")
   .delete(usersController.removeFromList);

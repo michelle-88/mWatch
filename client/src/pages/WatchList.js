@@ -5,11 +5,11 @@ import Button from "../components/Button";
 import TVAPI from "../utils/TVAPI";
 import { Link } from "react-router-dom";
 import PrivateNav from "../components/PrivateNav";
+import {Login, usernameTransfer} from "../components/Login";
 
 class WatchList extends Component {
     state = {
-        shows: [],
-        username: "michelle"
+        shows: []
     };
     
     componentDidMount() {
@@ -17,7 +17,7 @@ class WatchList extends Component {
     };
 
     loadWatchList = () => {
-        DBAPI.getWatchList(this.state.username)
+        DBAPI.getWatchList(usernameTransfer)
         .then(res => this.setState({ shows: res.data.watchList }))
         .catch(err => console.log(err));
     }

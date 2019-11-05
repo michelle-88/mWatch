@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LoginCard from "../components/LoginCard";
 import Auth from "../utils/Auth";
+let username = "";
 //Uses the Auth methods to actually login with the LoginForm Component.
 class Login extends React.Component {
     //Initial boolean to check for authenticated user
@@ -12,7 +13,8 @@ class Login extends React.Component {
     /* We need to POST to the API the users info,
         This will get passed down as a prop to the LoginForm */
 	login = (data) => {
-        console.log('Logging in ' + data.username);
+		console.log('Logging in ' + data.username);
+		username = data.username;
         this.setState({username: data.username})
 		fetch('api/users/login', {
 			method: 'POST',
@@ -53,4 +55,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+export { Login, username };

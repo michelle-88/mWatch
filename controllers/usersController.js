@@ -58,22 +58,23 @@ module.exports = {
 	},
 	
 	addToList: function(req, res) {
-		db.User
-		  .findOneAndUpdate({userName: "michelle"}, {$push: {watchList: req.body}})
+		console.log(req.body)
+		Account
+		  .findOneAndUpdate({username: req.params.username}, {$push: {watchList: req.body}})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},
 	
-	  getList: function(req, res) {
-		db.User
-		  .findOne({userName: req.params.username})
+	getList: function(req, res) {
+		Account
+		  .findOne({username: req.params.username})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},
 	
-	  removeFromList: function(req, res) {
-		db.User
-		  .update({}, { $pull: { watchList: { _id: req.params.id } } })
+	removeFromList: function(req, res) {
+		Account
+		  .findOneAndUpdate()
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	}
