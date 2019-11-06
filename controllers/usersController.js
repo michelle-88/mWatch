@@ -83,8 +83,15 @@ module.exports = {
 
 	addToPeanutGallery: function(req, res) {
 		PeanutGallery
-		.create(req.body)
-		.then(dbModel => console.log(dbModel))
-		.catch(err => res.status(422).json(err));
+		  .create(req.body)
+		  .then(dbModel => console.log(dbModel))
+		  .catch(err => res.status(422).json(err));
+	},
+
+	getFromPeanutGallery: function(req, res) {
+		PeanutGallery
+		  .findOne({tmdbId: req.params.id})
+		  .then(dbModel => res.json(dbModel))
+		  .catch(err => res.status(422).json(err));
 	}
 };

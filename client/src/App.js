@@ -15,9 +15,11 @@ import Register from "./components/Register";
 // import ProtectedRoute from "./pages/PublicRoute";
 import Trending from "./pages/Trending";
 import Search from "./pages/Search";
-import WatchList from "./pages/WatchList";
-import Home from "./pages/Home"
+import {WatchList} from "./pages/WatchList";
+import Home from "./pages/Home";
+import Details from "./pages/Details";
 import './App.css';
+require('dotenv').config();
 
 //I want to add some basic inline styling here, even though we are bringing in styles
 const listStyle = {
@@ -44,7 +46,8 @@ class App extends React.Component {
 				<Route exact path="/register" component={Register}/>
 				<PrivateRoute exact path="/trending" component={Trending}/>
 				<PrivateRoute exact path="/search" component={Search}/>
-				<PrivateRoute exact path="/watchlist" component={WatchList}/>
+				<PrivateRoute exact path="/watchlist" component={WatchList}/>				
+				<PrivateRoute path="/peanutgallery" component={Details}/>				
 				{/* <Route component={NoMatch} /> */}
 			</Switch>
 

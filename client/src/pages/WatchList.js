@@ -3,9 +3,9 @@ import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
 import TVAPI from "../utils/TVAPI";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {Login, usernameTransfer} from "../components/Login";
-
+let detailsId;
 
 class WatchList extends Component {
     state = {
@@ -28,6 +28,16 @@ class WatchList extends Component {
             .catch(err => console.log(err));
     }
 
+    routeChange() {
+        let path = "/peanutgallery";
+        this.props.history.push(path);
+    }
+
+    getDetails = id => {
+        detailsId = id;
+        this.routeChange();
+    }
+
     render() {
         return (
             <div>
@@ -42,10 +52,8 @@ class WatchList extends Component {
                     <Button className="btn btn-danger" onClick={() => this.deleteShow(show._id)}>
                         Remove
                     </Button>
-                    <Button className="btn btn-info">
-                    <Link className="text-white" to={"/api/users/showdetails/" + show.id}>
+                    <Button className="btn btn-info" onClick={() => this.getDetails(show.id)}>
                         View More
-                    </Link>
                     </Button>
                     </SmallCard>
                 ))}
@@ -54,4 +62,4 @@ class WatchList extends Component {
     }
 }
 
-export default WatchList;
+export {WatchList, detailsId};
