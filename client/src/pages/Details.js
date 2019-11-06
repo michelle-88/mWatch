@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import TVAPI from "../utils/TVAPI";
+import DBAPI from "../utils/DBAPI";
 import DetailJumbotron from "../components/DetailJumbotron";
+import {detailsId} from "../pages/WatchList";
 
 class DetailsPage extends Component {
     state = {
@@ -8,9 +9,8 @@ class DetailsPage extends Component {
     }
 
     componentDidMount() {
-        TVAPI.getImdbID(this.props.match.params.id)
-          .then(res => TVAPI.getImdbInfo(res.imdb_id))
-          .then(res => this.setState({ details: [res.data] }))
+        DBAPI.getFromPeanutGallery(detailsId)
+          .then(res => this.setState({details: [res.data]}))
           .catch(err => console.log(err));
     }
 
@@ -19,15 +19,15 @@ class DetailsPage extends Component {
             <div>
                 {this.state.details.map(detail => (
                     <DetailJumbotron
-                    title={detail.Title}
-                    poster={detail.Poster}
-                    plot={detail.Plot}
-                    actors={detail.Actors}
-                    genre={detail.Genre}
-                    rated={detail.Rated}
-                    released={detail.Released}
-                    writer={detail.Writer}
-                    rating={detail.imdbRating}
+                    title={detail.title}
+                    poster={detail.posterURL}
+                    plot={detail.plot}
+                    actors={detail.actors}
+                    genre={detail.genre}
+                    rated={detail.rated}
+                    released={detail.released}
+                    writer={detail.writer}
+                    rating={detail.rating}
                     >
                     </DetailJumbotron>  
                 ))}

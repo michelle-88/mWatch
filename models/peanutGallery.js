@@ -6,6 +6,7 @@ const PeanutGallery = new Schema({
         type: String,
         unique: true
     },
+    tmdbId: Number,
     title: String,
     posterURL: String,
     plot: String,

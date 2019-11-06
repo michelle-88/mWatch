@@ -91,7 +91,6 @@ class Trending extends Component {
           username: ""
     }
     
-
     saveShow = (id, name, poster, summary) => {
         DBAPI.saveShow(usernameTransfer, {
           id: id,
@@ -99,7 +98,7 @@ class Trending extends Component {
           poster: poster,
           summary: summary
         })
-        .then(res => console.log(res))
+        .then(TVAPI.getImdbID(id))
         .catch(err => console.log(err));
     }
 

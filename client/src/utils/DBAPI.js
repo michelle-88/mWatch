@@ -16,6 +16,10 @@ export default {
     // Save new show in Peanut Gallery with details
     addToPeanutGallery: function(showData) {
         return axios.post("/api/users/peanutgallery", showData);
+    },
+    // Get details about a show in the Peanut Gallery
+    getFromPeanutGallery: function(id) {
+        return axios.get("/api/users/peanutgallery/" + id);
     }
 
 };
