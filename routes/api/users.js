@@ -25,6 +25,9 @@ router.route("/peanutgallery")
   .post(usersController.addToPeanutGallery);
 router.route("/peanutgallery/:id")
   .get(usersController.getFromPeanutGallery);
+router.route("/peanutgallery/:id")
+  .put(usersController.updatePeanutGallery);
+
 // Matches with "/api/users/:id"
 
 /* Testing Endpoint */

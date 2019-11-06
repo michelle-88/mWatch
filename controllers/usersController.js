@@ -102,6 +102,13 @@ module.exports = {
 		  .catch(err => res.status(422).json(err));
 	},
 
+	updatePeanutGallery: function(req, res) {
+		PeanutGallery
+		  .findOneAndUpdate({tmdbId: req.params.id}, {$push: {whereToWatch: req.body}})
+		  .then(dbModel => res.json(dbModel))
+		  .catch(err => res.status(422).json(err));
+	},
+
 	getFromPeanutGallery: function(req, res) {
 		PeanutGallery
 		  .findOne({tmdbId: req.params.id})

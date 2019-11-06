@@ -16,6 +16,11 @@ const PeanutGallery = new Schema({
     released: String,
     writer: String,
     rating: Number,
+    whereToWatch: [{
+        locationName: String,
+        streamingUrl: String,
+        icon: String
+    }],
     comments: [
         {
             type: Schema.Types.ObjectId,
