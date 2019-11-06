@@ -4,6 +4,8 @@ const passport = require('passport');
 
 module.exports = {
     getUser: function(req, res, next) {
+		console.log("User in getUser")
+		console.log(req.session.passport.user)
         if(req.session.passport.user) {
             return res.status(200).json({
                 user: req.session.passport.user,
@@ -35,10 +37,14 @@ module.exports = {
     },
     login: function(req, res, next) {
 		console.log('/login handler');
+		console.log("req.body")
+		console.log(req.body)
 		req.session.save((err) => {
 			if (err) {
 				return next(err);
 			}
+			console.log("res.status")
+			console.log(res.status)
 			res.status(200).send('OK');
 		});
     },
