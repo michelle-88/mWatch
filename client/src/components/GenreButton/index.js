@@ -5,7 +5,9 @@ import React from "react";
 function GenreButton(props) {
   return (
     <button 
-    onClick={()=>props.searchByGenre(props.id)}
+    onClick={()=>{ 
+      console.log(props.id)
+      props.searchByGenre(props.id)}}
     className="genre-btn btn btn-white text-dark" data-id={props.id} role="button" tabIndex="0">
       {props.name}
     </button>
