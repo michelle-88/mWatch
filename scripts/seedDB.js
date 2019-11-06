@@ -5,7 +5,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/"
+  "mongodb://localhost/mWatchDB"
 );
 
 const userSeed = 
@@ -16,33 +16,10 @@ const userSeed =
   }
 ;
 
-// db.Account
-//   .remove({})
-//   .then(() => db.Account.collection.insertMany(userSeed))
-
-//   .then(data => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
-  db.Account
+db.Account
   .remove({})
-  .then(() => db.Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
-    if (err) {
-      return res.status(500).send({ error : err.message });
-    }
-    passport.authenticate('local')(req, res, () => {
-      req.session.save((err) => {
-        if (err) {
-          return next(err);
-        }
-        res.status(200).send('OK');
-      });
-    });
-  }))
+  .then(() => db.Account.collection.insertMany(userSeed))
+
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -51,3 +28,26 @@ const userSeed =
     console.error(err);
     process.exit(1);
   });
+  // db.Account
+  // .remove({})
+  // .then(() => db.Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
+  //   if (err) {
+  //     return res.status(500).send({ error : err.message });
+  //   }
+  //   passport.authenticate('local')(req, res, () => {
+  //     req.session.save((err) => {
+  //       if (err) {
+  //         return next(err);
+  //       }
+  //       res.status(200).send('OK');
+  //     });
+  //   });
+  // }))
+  // .then(data => {
+  //   console.log(data.result.n + " records inserted!");
+  //   process.exit(0);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  //   process.exit(1);
+  // });
