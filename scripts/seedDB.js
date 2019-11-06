@@ -18,7 +18,19 @@ const userSeed = [
 
 db.Account
   .remove({})
-  .then(() => db.Account.collection.insertMany(userSeed))
+  .then(() => db.Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
+    if (err) {
+      return res.status(500).send({ error : err.message });
+    }
+    passport.authenticate('local')(req, res, () => {
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.status(200).send('OK');
+      });
+    });
+  }))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -27,3 +39,16 @@ db.Account
     console.error(err);
     process.exit(1);
   });
+  // Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
+  //   if (err) {
+  //     return res.status(500).send({ error : err.message });
+  //   }
+  //   passport.authenticate('local')(req, res, () => {
+  //     req.session.save((err) => {
+  //       if (err) {
+  //         return next(err);
+  //       }
+  //       res.status(200).send('OK');
+  //     });
+  //   });
+  // })
