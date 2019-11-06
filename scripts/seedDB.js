@@ -8,13 +8,13 @@ mongoose.connect(
   "mongodb://localhost/mWatchDB"
 );
 
-const userSeed = 
+const userSeed = [
   {
     username: "user",
     password: "password",
     watchlist: []
   }
-;
+];
 
 db.Account
   .remove({})
