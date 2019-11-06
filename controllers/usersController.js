@@ -42,13 +42,17 @@ module.exports = {
 		console.log("User in getUser")
 		console.log(req.session.passport.user)
 		console.log(req.session)
-		
+		console.log("status")
+		console.log(res.status)
+		if(!req.session.passport.user){
+			return false
+		}
 		req.session.save((err) => {
 			if (err) {
 				return next(err);
 			}
 			console.log("res.status")
-			console.log(res.status)
+			console.log(res.status())
 			res.status(200).send('OK');
 		});
     },
