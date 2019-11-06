@@ -1,6 +1,6 @@
 import DBAPI from "../utils/DBAPI";
 const MovieDb = require('moviedb-promise');
-const moviedb = new MovieDb(process.env.REACT_APP_API_KEY);
+const moviedb = new MovieDb("0faa87ddbbef0c9919c7bc4cce783c37");
 const axios = require('axios');
 
 export default {
@@ -26,7 +26,7 @@ export default {
       "headers":{
       "content-type":"application/octet-stream",
       "x-rapidapi-host":"movie-database-imdb-alternative.p.rapidapi.com",
-      "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY
+      "x-rapidapi-key": "a2f015a678msh2a0ce21581b9776p142941jsn5041963e7f65"
       },"params":{
       "i": imdbId,
       "r":"json"
