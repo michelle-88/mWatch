@@ -8,15 +8,27 @@ mongoose.connect(
   "mongodb://localhost/"
 );
 
-const userSeed = [
+const userSeed = 
   {
     username: "user",
     password: "password",
     watchlist: []
   }
-];
+;
 
-db.Account
+// db.Account
+//   .remove({})
+//   .then(() => db.Account.collection.insertMany(userSeed))
+
+//   .then(data => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
+  db.Account
   .remove({})
   .then(() => db.Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
     if (err) {
@@ -39,16 +51,3 @@ db.Account
     console.error(err);
     process.exit(1);
   });
-  // Account.register(new Account({ username : userSeed.username }), userSeed.password, (err, account) => {
-  //   if (err) {
-  //     return res.status(500).send({ error : err.message });
-  //   }
-  //   passport.authenticate('local')(req, res, () => {
-  //     req.session.save((err) => {
-  //       if (err) {
-  //         return next(err);
-  //       }
-  //       res.status(200).send('OK');
-  //     });
-  //   });
-  // })

@@ -12,7 +12,6 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "seed": "node scripts/seedDB.js"
-    
   },
   "homepage": "https://mwatch.herokuapp.com/",
   "author": "",
