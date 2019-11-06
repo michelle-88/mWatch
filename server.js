@@ -71,7 +71,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 /* === Mongoose Connection === */
-mongoose.connect('mongodb://localhost/mWatchDB',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/mWatchDB',{ useNewUrlParser: true });
 
 /* === Error Handling === */
 
