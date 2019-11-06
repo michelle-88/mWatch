@@ -15,6 +15,9 @@ function DetailJumbotron(props) {
             <p><strong>First Aired:</strong> {props.released}</p>
             <p><strong>Written By:</strong> {props.writer}</p>
             <p><strong>IMDb Rating:</strong> {props.rating}/10</p>
+            <h3>Where To Watch</h3>
+            <p><strong>Streaming Service:</strong> {props.location}</p>
+            <p><strong>Link to show:</strong> <a href={props.streamUrl}>Start Watching Now!</a></p>
         </div>
     );
 }

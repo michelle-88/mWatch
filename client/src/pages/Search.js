@@ -32,6 +32,7 @@ class Search extends Component {
         summary: summary
       })
       .then(TVAPI.getImdbID(id))
+      .then(TVAPI.getUtellyInfo(id, name))
       .catch(err => console.log(err));
     }
 

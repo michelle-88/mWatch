@@ -6,7 +6,6 @@ import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
 import {Login, usernameTransfer} from "../components/Login";
 
-
 class Trending extends Component {
     state = {
         shows: [],
@@ -92,6 +91,7 @@ class Trending extends Component {
     }
     
     saveShow = (id, name, poster, summary) => {
+        document.querySelector(`[data-id="${id}"]`).setAttribute('disabled', 'true');
         DBAPI.saveShow(usernameTransfer, {
           id: id,
           name: name,
@@ -99,6 +99,7 @@ class Trending extends Component {
           summary: summary
         })
         .then(TVAPI.getImdbID(id))
+        .then(TVAPI.getUtellyInfo(id, name))
         .catch(err => console.log(err));
     }
 
@@ -139,9 +140,8 @@ class Trending extends Component {
                         name={show.name}
                         poster={show.poster_path}
                         summary={show.overview}
-
                     >
-                    <Button className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                    <Button data-id={show.id} className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
                         Add to Watch List
                     </Button>
                     </SmallCard>

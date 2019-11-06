@@ -28,6 +28,8 @@ class DetailsPage extends Component {
                     released={detail.released}
                     writer={detail.writer}
                     rating={detail.rating}
+                    location={detail.whereToWatch[0].locationName}
+                    streamUrl={detail.whereToWatch[0].streamingUrl}
                     >
                     </DetailJumbotron>  
                 ))}

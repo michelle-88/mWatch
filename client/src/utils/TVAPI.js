@@ -48,5 +48,28 @@ export default {
       .catch((error)=>{
         console.log(error)
       })
+  },
+  // Get 'Where To Watch' info from Utelly API
+  getUtellyInfo: function(id, show) {
+    return axios({
+      "method":"GET",
+      "url":"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
+      "headers":{
+      "content-type":"application/octet-stream",
+      "x-rapidapi-host":"utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+      "x-rapidapi-key":"a2f015a678msh2a0ce21581b9776p142941jsn5041963e7f65"
+      },"params":{
+      "term": show,
+      "country":"us"
+      }
+      })
+      .then(res => DBAPI.updatePeanutGallery(id, {
+        locationName: res.data.results[0].locations[0].display_name,
+        streamingUrl: res.data.results[0].locations[0].url,
+        icon: res.data.results[0].locations[0].icon
+      }))
+      .catch((error)=>{
+        console.log(error)
+      })
   }
 };
