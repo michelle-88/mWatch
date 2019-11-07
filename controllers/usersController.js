@@ -72,44 +72,30 @@ module.exports = {
         console.log(`Ping Dinger ${req.statusCode}`);
 		res.status(200).send("Dong!");
 	},
-	checkShow: function(req, res){
-		console.log(req.body)
-		Account
-		  .findOne({username: req.params.username})
-		  .then(console.log("Testing Here"))
-		  console.log("req.body")
-		  console.log(req.body)
-		  console.log("req.body.id")
-		  console.log(req.body.id)
-		  console.log("dbModel")
-		  console.log(dbModel)
-		  .then(dbModel => console.log(dbModel))
-		  .then(dbModel.watchList.forEach(show=>{
-			  console.log("logging show")
-			  console.log(show)
-		  }))
-		  .catch(err => res.status(422).json(err))
-	},
+	// checkShow: function(req, res){
+	// 	console.log(req.body)
+	// 	Account
+	// 	  .findOne({username: req.params.username})
+	// 	  .then(console.log("Testing Here"))
+	// 	  console.log("req.body")
+	// 	  console.log(req.body)
+	// 	  console.log("req.body.id")
+	// 	  console.log(req.body.id)
+	// 	  console.log("dbModel")
+	// 	  console.log(dbModel)
+	// 	  .then(dbModel => console.log(dbModel))
+	// 	  .then(dbModel.watchList.forEach(show=>{
+	// 		  console.log("logging show")
+	// 		  console.log(show)
+	// 	  }))
+	// 	  .catch(err => res.status(422).json(err))
+	// },
 	addToList: function(req, res) {
 		console.log(req.body)
 		Account
-		.findOne({username: req.params.username})
-		.then(console.log("Testing Here"))
-		console.log("req.body")
-		console.log(req.body)
-		console.log("req.body.id")
-		console.log(req.body.id)
-		console.log("dbModel")
-		console.log(dbModel)
-		.then(dbModel => console.log(dbModel))
-		.then(dbModel.watchList.forEach(show=>{
-			console.log("logging show")
-			console.log(show)
-		}))
-		.catch(err => res.status(422).json(err))
-		//   .findOneAndUpdate({username: req.params.username}, {$push: {watchList: req.body}})
-		//   .then(dbModel => res.json(dbModel))
-		//   .catch(err => res.status(422).json(err));
+		  .findOneAndUpdate({username: req.params.username}, {$push: {watchList: req.body}})
+		  .then(dbModel => res.json(dbModel))
+		  .catch(err => res.status(422).json(err));
 	},
 	
 	getList: function(req, res) {
