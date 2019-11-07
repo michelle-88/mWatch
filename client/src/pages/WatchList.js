@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
-import TVAPI from "../utils/TVAPI";
-import {Login, usernameTransfer} from "../components/Login";
+import {usernameTransfer} from "../components/Login";
 let detailsId;
 
 class WatchList extends Component {

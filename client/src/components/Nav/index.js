@@ -2,11 +2,7 @@ import React from "react";
 import "./style.css";
 import {
 	BrowserRouter as Router,
-	Route,
-	Link,
-  Redirect,
-  Switch,
-	withRouter
+	Link
 } from 'react-router-dom';
 import Auth from "../../utils/Auth";
 
@@ -17,17 +13,17 @@ function Nav() {
           <p className="navbar-brand text-danger"><strong><span className="logo-1">MW</span>atch<span className="logo-2"></span></strong></p>
       </span>
       <ul className="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li className="nav-item">
           <Link className="nav-link text-dark float-right" to="/trending">
             Trending
           </Link>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <Link className="nav-link text-dark float-right" to="/watchlist">
             Watch List
           </Link>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <Link className="nav-link text-dark float-right" to="/search">
             Search
           </Link>

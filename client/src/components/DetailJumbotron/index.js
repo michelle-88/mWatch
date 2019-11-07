@@ -17,7 +17,6 @@ function DetailJumbotron(props) {
             <p><strong>IMDb Rating:</strong> {props.rating}/10</p>
             <h3>Where To Watch</h3>
             {props.children}
-
         </div>
     );
 }
