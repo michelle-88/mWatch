@@ -4,7 +4,7 @@ import DBAPI from "../utils/DBAPI";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
-import {Login, usernameTransfer} from "../components/Login";
+import {usernameTransfer} from "../components/Login";
 
 class Trending extends Component {
     state = {
@@ -100,7 +100,6 @@ class Trending extends Component {
           summary: summary
         })
         .then(TVAPI.getImdbID(id))
-        // .then(TVAPI.getUtellyInfo(id, name))
         .catch(err => console.log(err));
     }
 

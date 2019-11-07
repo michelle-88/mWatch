@@ -2,14 +2,12 @@ import React from 'react'
 import {
 	BrowserRouter as Router,
 	Route,
-	Link,
   Redirect,
-  Switch,
-	withRouter
+  Switch
 } from 'react-router-dom';
 import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
-import {Login, usernameTransfer} from "./components/Login";
+import {Login} from "./components/Login";
 import Register from "./components/Register";
 import Trending from "./pages/Trending";
 import Search from "./pages/Search";
@@ -19,11 +17,6 @@ import Details from "./pages/Details";
 import './App.css';
 require('dotenv').config();
 
-//I want to add some basic inline styling here, even though we are bringing in styles
-const listStyle = {
-	color: 'cornflowerblue',
-	listStyle:'none'
-  };
 //Now we have all the stuff we need .. let's render some components with the Router
 class App extends React.Component {
 	render() {

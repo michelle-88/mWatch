@@ -4,7 +4,7 @@ import DBAPI from "../utils/DBAPI";
 import SearchForm from "../components/SearchForm";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
-import {Login, usernameTransfer} from "../components/Login";
+import {usernameTransfer} from "../components/Login";
 
 
 class Search extends Component {
@@ -34,7 +34,6 @@ class Search extends Component {
         summary: summary
       })
       .then(TVAPI.getImdbID(id))
-    //   .then(TVAPI.getUtellyInfo(id, name))
       .catch(err => console.log(err));
     }
 

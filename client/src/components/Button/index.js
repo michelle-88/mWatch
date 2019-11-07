@@ -3,7 +3,7 @@ import "./style.css";
 
 function Button(props) {
   return (
-    <button {...props} role="button" tabIndex="0">
+    <button {...props} tabIndex="0">
       
     </button>
   );
