@@ -11,8 +11,6 @@ import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
 import {Login, usernameTransfer} from "./components/Login";
 import Register from "./components/Register";
-// import PublicRoute from "./pages/PublicRoute";
-// import ProtectedRoute from "./pages/PublicRoute";
 import Trending from "./pages/Trending";
 import Search from "./pages/Search";
 import {WatchList} from "./pages/WatchList";
@@ -34,12 +32,6 @@ class App extends React.Component {
 
 		<div className="bg-dark">
 			<Nav className="App-header"/>
-			{/* <AuthButton/> */}
-			{/* <ul style={listStyle}>
-				<li><Link to="/public">Public Page</Link></li>
-				<li><Link to="/protected">Protected Page</Link></li>
-				<li><Link to="/register">Register a New User</Link></li>
-			</ul> */}
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/login" component={Login}/>
