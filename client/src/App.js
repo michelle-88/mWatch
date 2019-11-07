@@ -29,7 +29,6 @@ class App extends React.Component {
 	render() {
 		return (
 	<Router>
-
 		<div className="bg-dark">
 			<Nav className="App-header"/>
 			<Switch>
@@ -42,7 +41,6 @@ class App extends React.Component {
 				<PrivateRoute path="/peanutgallery" component={Details}/>				
 				{/* <Route component={NoMatch} /> */}
 			</Switch>
-
 		</div>
 	</Router>
 		)

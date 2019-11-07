@@ -23,6 +23,7 @@ class RegisterForm extends React.Component {
 							password: this.passwordElem.value
 						});
 					}}
+					className="bg-dark"
 				>
 					<div className="form-group container">
 						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>

@@ -2,7 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LoginForm from "../LoginForm";
 import Auth from "../../utils/Auth";
-import Landing from "../../components/Landing";
+import Landing from "../Landing";
+import LandingImage from "../LandingImage";
 let usernameTransfer = "";
 //Uses the Auth methods to actually login with the LoginForm Component.
 class Login extends React.Component {
@@ -47,10 +48,12 @@ class Login extends React.Component {
 		
 		return (
 			<div>
-				<p>You must log in to view the page at {from.pathname}</p>
+				{/* <p className="text-white">You must log in to view the page at {from.pathname}</p> */}
 				<Landing/>
 				<LoginForm onLogin={this.login} />
+				<LandingImage/>
 			</div>
+			
 		)
 	}
 }
