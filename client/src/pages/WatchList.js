@@ -17,7 +17,19 @@ class WatchList extends Component {
 
     loadWatchList = () => {
         DBAPI.getWatchList(usernameTransfer)
-        .then(res => this.setState({ shows: res.data.watchList }))
+        .then(res => {
+            let showDisplay = []
+            let showId = []
+            res.data.watchList.forEach(show=>{
+                if(showId.includes(show.id)){
+                    return false
+                } else {
+                    showDisplay.push(show)
+                    showId.push(show.id)
+                }
+            })
+            this.setState({ shows: showDisplay })
+        })
         .catch(err => console.log(err));
     }
 
