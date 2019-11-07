@@ -25,6 +25,8 @@ class Search extends Component {
     };
 
     saveShow = (id, name, poster, summary) => {
+      document.querySelector(`[data-id="${id}"]`).setAttribute('disabled', 'true');
+      document.querySelector(`[data-id="${id}"]`).innerHTML = '<i class="fas fa-check-circle fa-lg"></i>';
       DBAPI.saveShow(usernameTransfer, {
         id: id,
         name: name,
@@ -32,7 +34,7 @@ class Search extends Component {
         summary: summary
       })
       .then(TVAPI.getImdbID(id))
-      .then(TVAPI.getUtellyInfo(id, name))
+    //   .then(TVAPI.getUtellyInfo(id, name))
       .catch(err => console.log(err));
     }
 
@@ -52,7 +54,7 @@ class Search extends Component {
                         poster={show.poster_path}
                         summary={show.overview}
                     >
-                    <Button className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                    <Button data-id={show.id} className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
                         Add to Watch List
                     </Button>
                     </SmallCard>

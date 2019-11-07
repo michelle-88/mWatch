@@ -23,6 +23,6 @@ export default {
     },
     // Update Peanut Gallery document with 'Where To Watch' info
     updatePeanutGallery: function(id, watchData) {
-        return axios.put("/api/users/peanutgallery/" + id, watchData);
+        return axios.post("/api/users/peanutgallery/" + id, watchData);
     }
 };

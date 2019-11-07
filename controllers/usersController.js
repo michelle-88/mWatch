@@ -36,14 +36,14 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
-		console.log('/login handler');
-		console.log("req.body")
-		console.log(req.body)
-		console.log("User in getUser")
-		console.log(req.session.passport.user)
-		console.log(req.session)
-		console.log("status")
-		console.log(res.status)
+		// console.log('/login handler');
+		// console.log("req.body")
+		// console.log(req.body)
+		// console.log("User in getUser")
+		// console.log(req.session.passport.user)
+		// console.log(req.session)
+		// console.log("status")
+		// console.log(res.status)
 		if(!req.session.passport.user){
 			return false
 		}
@@ -98,13 +98,13 @@ module.exports = {
 	addToPeanutGallery: function(req, res) {
 		PeanutGallery
 		  .create(req.body)
-		  .then(dbModel => console.log(dbModel))
+		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},
 
 	updatePeanutGallery: function(req, res) {
 		PeanutGallery
-		  .findOneAndUpdate({tmdbId: req.params.id}, {$push: {whereToWatch: req.body}})
+		  .findOneAndUpdate({imdbId: req.params.id}, {$push: {whereToWatch: req.body}})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},

@@ -92,6 +92,7 @@ class Trending extends Component {
     
     saveShow = (id, name, poster, summary) => {
         document.querySelector(`[data-id="${id}"]`).setAttribute('disabled', 'true');
+        document.querySelector(`[data-id="${id}"]`).innerHTML = '<i class="fas fa-check-circle fa-lg"></i>';
         DBAPI.saveShow(usernameTransfer, {
           id: id,
           name: name,
@@ -99,7 +100,7 @@ class Trending extends Component {
           summary: summary
         })
         .then(TVAPI.getImdbID(id))
-        .then(TVAPI.getUtellyInfo(id, name))
+        // .then(TVAPI.getUtellyInfo(id, name))
         .catch(err => console.log(err));
     }
 
