@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DBAPI from "../utils/DBAPI";
 import DetailJumbotron from "../components/DetailJumbotron";
-import {detailsId} from "../pages/WatchList";
+import { detailsId } from "../pages/WatchList";
 
 class DetailsPage extends Component {
     state = {
@@ -10,8 +10,8 @@ class DetailsPage extends Component {
 
     componentDidMount() {
         DBAPI.getFromPeanutGallery(detailsId)
-          .then(res => this.setState({details: [res.data]}))
-          .catch(err => console.log(err));
+            .then(res => this.setState({ details: [res.data] }))
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -19,22 +19,24 @@ class DetailsPage extends Component {
             <div>
                 {this.state.details.map(detail => (
                     <DetailJumbotron
-                    title={detail.title}
-                    poster={detail.posterURL}
-                    plot={detail.plot}
-                    actors={detail.actors}
-                    genre={detail.genre}
-                    rated={detail.rated}
-                    released={detail.released}
-                    writer={detail.writer}
-                    rating={detail.rating}
-                    location={detail.whereToWatch[0].locationName}
-                    streamUrl={detail.whereToWatch[0].streamingUrl}
+                        key={detail.imdbId}
+                        title={detail.title}
+                        poster={detail.posterURL}
+                        plot={detail.plot}
+                        actors={detail.actors}
+                        genre={detail.genre}
+                        rated={detail.rated}
+                        released={detail.released}
+                        writer={detail.writer}
+                        rating={detail.rating}
                     >
-                    </DetailJumbotron>  
+                        {!detail.whereToWatch.length ? (<p>No streaming information available... Please check back later!</p>)
+                            : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
+                                <p><strong>Link to show:</strong> <a href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
+                    </DetailJumbotron>
                 ))}
             </div>
-        )   
+        )
     }
 }
 

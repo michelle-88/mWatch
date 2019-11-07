@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PeanutGallery = new Schema({
-    imdbID: {
+    imdbId: {
         type: String,
         unique: true
     },

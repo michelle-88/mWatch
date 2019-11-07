@@ -26,7 +26,7 @@ router.route("/peanutgallery")
 router.route("/peanutgallery/:id")
   .get(usersController.getFromPeanutGallery);
 router.route("/peanutgallery/:id")
-  .put(usersController.updatePeanutGallery);
+  .post(usersController.updatePeanutGallery);
 
 // Matches with "/api/users/:id"
 

@@ -13,14 +13,14 @@ export default {
     return moviedb.discoverTv({with_genres: genre, page: 1 }).catch(console.error);
   },
   // Gets IMDb id for a specific show so API call can be made to IMDb API
-  getImdbID: function(id) {
-    return moviedb.tvExternalIds({ id: id })
-      .then(res => this.getImdbInfo(res.imdb_id, res.id))
+  getImdbID: function(tmdbId) {
+    moviedb.tvExternalIds({ id: tmdbId })
+      .then(res => this.getImdbInfo(res.imdb_id, tmdbId))
       .catch(console.error);
   },
   // Get detailed info from IMDb about particular show
   getImdbInfo: function(imdbId, tmdbId) {
-    return axios({
+    axios({
       "method":"GET",
       "url":"https://movie-database-imdb-alternative.p.rapidapi.com/",
       "headers":{
@@ -33,7 +33,7 @@ export default {
       }
       })
       .then(res => DBAPI.addToPeanutGallery({
-        imdbID: res.data.imdbID,
+        imdbId: imdbId,
         tmdbId: tmdbId,
         title: res.data.Title,
         posterURL: res.data.Poster,
@@ -45,13 +45,14 @@ export default {
         writer: res.data.Writer,
         rating: res.data.imdbRating
       }))
+      .then(res => this.getUtellyInfo(imdbId, res.data.title))
       .catch((error)=>{
         console.log(error)
       })
   },
   // Get 'Where To Watch' info from Utelly API
   getUtellyInfo: function(id, show) {
-    return axios({
+    axios({
       "method":"GET",
       "url":"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
       "headers":{
