@@ -11,7 +11,7 @@ class Login extends React.Component {
         username: ""
 	}
     /* We need to POST to the API the users info,
-        This will get passed down as a prop to the LoginForm */
+		This will get passed down as a prop to the LoginForm */
 	login = (data) => {
 		console.log('Logging in ' + data.username);
 		username = data.username;

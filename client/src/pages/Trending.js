@@ -106,6 +106,7 @@ class Trending extends Component {
     componentDidMount(){
       this.setState({username: this.props.match.params.username})
       this.searchByGenre();
+      console.log(usernameTransfer)
     }
 
     searchByGenre = id => {

@@ -11,6 +11,7 @@ class WatchList extends Component {
     };
     
     componentDidMount() {
+        console.log(usernameTransfer);
         this.loadWatchList();
     };
 
