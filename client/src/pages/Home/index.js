@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Landing from "../../components/Landing";
+import LandingImage from "../../components/LandingImage"
 import "./style.css"
 
 function Home(){
@@ -11,6 +12,7 @@ function Home(){
                 <button className="btn btn-lg bg-white"><Link to="/login"><span className="text-dark">Login</span></Link></button>
                 <button className="btn btn-lg bg-white"><Link to="/register"><span className="text-dark">Register</span></Link></button>
             </div>
+            <LandingImage/>
         </div>
     )
 }
