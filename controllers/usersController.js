@@ -113,8 +113,13 @@ module.exports = {
 	},
 
 	addToPeanutGallery: function(req, res) {
+		let newPg = new PeanutGallery(req.body)
 		PeanutGallery
-		  .create(req.body)
+		  .on('index', function(err){
+			newPg.save(function(err) {
+				console.log(err)
+			})
+		  })
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},
