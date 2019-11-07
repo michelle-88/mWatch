@@ -6,7 +6,10 @@ const Account = new Schema({
     username: String,
     password: String,
     watchList: [{
-        id: Number,
+        id: {
+            type: Number,
+            unique: true
+        },
         name: String,
         poster: String,
         summary: String
