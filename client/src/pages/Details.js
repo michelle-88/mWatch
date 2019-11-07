@@ -19,7 +19,7 @@ class DetailsPage extends Component {
             <div>
                 {this.state.details.map(detail => (
                     <DetailJumbotron
-                        key={detail.imdbId}
+                        key={detail.posterURL}
                         title={detail.title}
                         poster={detail.posterURL}
                         plot={detail.plot}
