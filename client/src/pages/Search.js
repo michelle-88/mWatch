@@ -6,6 +6,11 @@ import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
 import {usernameTransfer} from "../components/Login";
 
+const styles = {
+    title: {
+      fontFamily: 'Limelight'
+    }
+}
 
 class Search extends Component {
     state = {
@@ -40,6 +45,7 @@ class Search extends Component {
     render() {
         return (
             <div>
+                <h1 style={styles.title} className="text-danger text-center my-3">Search for Shows</h1>
                 <SearchForm 
                     query={this.state.query}
                     handleInputChange={this.handleInputChange}

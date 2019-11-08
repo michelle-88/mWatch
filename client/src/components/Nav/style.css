@@ -4,3 +4,11 @@
 .logo-2{
     font-family: 'Lobster', cursive;
 }
+
+.nav-link {
+    color: black !important;
+}
+
+.nav-link:hover {
+    color: red !important;
+}
