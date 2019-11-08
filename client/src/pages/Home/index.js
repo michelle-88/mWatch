@@ -9,8 +9,8 @@ function Home(){
         <div id="home" className="bg-dark">
             <Landing/>
             <div className="text-center bg-dark">
-                <button className="btn btn-lg bg-white"><Link to="/login"><span className="text-dark">Login</span></Link></button>
-                <button className="btn btn-lg bg-white"><Link to="/register"><span className="text-dark">Register</span></Link></button>
+                <button className="btn btn-lg bg-white mb-3"><Link to="/login"><span className="text-dark">Login</span></Link></button>
+                <button className="btn btn-lg bg-white mb-3"><Link to="/register"><span className="text-dark">Register</span></Link></button>
             </div>
             <LandingImage/>
         </div>

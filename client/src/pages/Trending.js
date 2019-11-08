@@ -4,7 +4,15 @@ import DBAPI from "../utils/DBAPI";
 import Button from "../components/Button";
 import SmallCard from "../components/SmallCard";
 import GenreButton from "../components/GenreButton";
+import BtnContainer from "../components/BtnContainer";
+import Container from "../components/Container";
 import {usernameTransfer} from "../components/Login";
+
+const styles = {
+  title: {
+    fontFamily: 'Limelight'
+  }
+}
 
 class Trending extends Component {
     state = {
@@ -125,7 +133,7 @@ class Trending extends Component {
     render() {
         return (
             <div>
-                <h1>Trending Now</h1>
+              <BtnContainer>
                 {this.state.genres.map(genre=>(
                     <GenreButton
                         searchByGenre={this.searchByGenre}
@@ -134,6 +142,9 @@ class Trending extends Component {
                         name={genre.name}
                     />
                 ))}
+                </BtnContainer>
+                <h1 style={styles.title} className="text-danger text-center my-3">Trending Shows</h1>
+                <Container>
                 {this.state.shows.map(show => (
                     <SmallCard 
                         key={show.id}
@@ -147,6 +158,7 @@ class Trending extends Component {
                     </Button>
                     </SmallCard>
                 ))}
+                </Container>
             </div>
         )
     }

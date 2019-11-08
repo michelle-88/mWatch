@@ -16,7 +16,7 @@ class DetailsPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 {this.state.details.map(detail => (
                     <DetailJumbotron
                         key={detail.posterURL}
@@ -30,9 +30,9 @@ class DetailsPage extends Component {
                         writer={detail.writer}
                         rating={detail.rating}
                     >
-                        {!detail.whereToWatch.length ? (<p>No streaming information available... Please check back later!</p>)
-                            : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
-                                <p><strong>Link to show:</strong> <a href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
+                    {!detail.whereToWatch.length ? (<p>No streaming information available... Please check back later!</p>)
+                        : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
+                            <p><a className="btn btn-outline-danger p-2" href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
                     </DetailJumbotron>
                 ))}
             </div>

@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import DBAPI from "../utils/DBAPI";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
+import Container from "../components/Container";
 import {usernameTransfer} from "../components/Login";
 let detailsId;
+
+const styles = {
+    title: {
+      fontFamily: 'Limelight'
+    }
+}
 
 class WatchList extends Component {
     state = {
@@ -51,6 +58,8 @@ class WatchList extends Component {
     render() {
         return (
             <div>
+                <h1 style={styles.title} className="text-danger text-center my-3">Your Watch List</h1>
+                <Container>
                 {this.state.shows.map(show => (
                     <SmallCard
                     key={show.id}
@@ -67,6 +76,7 @@ class WatchList extends Component {
                     </Button>
                     </SmallCard>
                 ))}
+                </Container>
             </div>
         )
     }
