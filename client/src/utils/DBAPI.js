@@ -24,5 +24,9 @@ export default {
     // Update Peanut Gallery document with 'Where To Watch' info
     updatePeanutGallery: function(id, watchData) {
         return axios.post("/api/users/peanutgallery/" + id, watchData);
+    },
+    // Add Comment to the db
+    addComment: function(id, commentData) {
+        return axios.post("/peanutgallery/comments/" + id, commentData);
     }
 };
