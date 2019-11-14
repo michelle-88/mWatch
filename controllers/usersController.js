@@ -1,5 +1,6 @@
 const Account = require("../models/account");
 const PeanutGallery = require("../models/peanutGallery");
+const Comment = require("../models/comment");
 const passport = require('passport');
 
 module.exports = {
@@ -131,5 +132,20 @@ module.exports = {
 		  .findOne({tmdbId: req.params.id})
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
+	},
+
+	postComment: function(req, res) {
+		Comment
+		  .create(req.body)
+		  .then(function(dbComment) {
+			return PeanutGallery.findOneAndUpdate({tmdbId: req.params.id}, {$push: {comments: dbComment._id}}, {new: true});
+		  })
+		  .then(function(dbModel) {
+			console.log(dbModel);
+			res.end();
+		  })
+		  .catch(function(err) {
+			console.log(err);
+		  });
 	}
 };
