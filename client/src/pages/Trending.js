@@ -145,6 +145,7 @@ class Trending extends Component {
                 </BtnContainer>
                 <h1 style={styles.title} className="text-danger text-center my-3">Trending Shows</h1>
                 <Container>
+                <div className="card-columns">
                 {this.state.shows.map(show => (
                     <SmallCard 
                         key={show.id}
@@ -154,10 +155,12 @@ class Trending extends Component {
                         summary={show.overview}
                     >
                     <Button data-id={show.id} className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                        <i className="fas fa-plus mr-2"></i>
                         Add to Watch List
                     </Button>
                     </SmallCard>
                 ))}
+                </div>
                 </Container>
             </div>
         )

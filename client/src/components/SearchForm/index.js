@@ -4,7 +4,6 @@ import "./style.css"
 function SearchForm(props) {
   return (
     <form className="search text-center container">
-        <label htmlFor="showSearch">Search For a TV Show:</label>
         <input
           value={props.query}
           onChange={props.handleInputChange}
