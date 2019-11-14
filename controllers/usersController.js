@@ -130,6 +130,7 @@ module.exports = {
 	getFromPeanutGallery: function(req, res) {
 		PeanutGallery
 		  .findOne({tmdbId: req.params.id})
+		  .populate("comments")
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
 	},
@@ -138,14 +139,9 @@ module.exports = {
 		Comment
 		  .create(req.body)
 		  .then(function(dbComment) {
-			return PeanutGallery.findOneAndUpdate({tmdbId: req.params.id}, {$push: {comments: dbComment._id}}, {new: true});
+			return PeanutGallery.findOneAndUpdate({tmdbId: req.params.id}, {$push: {comments: dbComment._id}});
 		  })
-		  .then(function(dbModel) {
-			console.log(dbModel);
-			res.end();
-		  })
-		  .catch(function(err) {
-			console.log(err);
-		  });
+		  .then(dbModel => res.json(dbModel))
+		  .catch(err => res.status(422).json(err));
 	}
 };

@@ -4,11 +4,13 @@ import DetailJumbotron from "../components/DetailJumbotron";
 import { detailsId } from "../pages/WatchList";
 import {usernameTransfer} from "../components/Login";
 import CommentForm from "../components/CommentForm";
+import CommentDiv from "../components/CommentDiv";
 
 class DetailsPage extends Component {
     state = {
         details: [],
-        comment: ""
+        comment: "",
+        updated: false
     }
 
     handleInputChange = event => {
@@ -21,7 +23,7 @@ class DetailsPage extends Component {
             body: this.state.comment,
             user: usernameTransfer
         })
-        .then(res => this.setState({ comment: "" }))
+        .then(res => this.setState({ comment: "", updated: true}))
         .catch(err => console.log(err));
     };
 
@@ -29,7 +31,18 @@ class DetailsPage extends Component {
         DBAPI.getFromPeanutGallery(detailsId)
             .then(res => this.setState({ details: [res.data] }))
             .catch(err => console.log(err));
-    }
+    };
+
+    componentDidUpdate() {
+        if(this.state.updated === true) {
+            DBAPI.getFromPeanutGallery(detailsId)
+            .then(res => this.setState({ details: [res.data], updated: false }))
+            .catch(err => console.log(err))
+        }
+        else {
+            return false;
+        }
+    };
 
     render() {
         return (
@@ -50,6 +63,9 @@ class DetailsPage extends Component {
                     {!detail.whereToWatch.length ? (<p>No streaming information available... Please check back later!</p>)
                         : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
                             <p><a className="btn btn-outline-danger p-2" href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
+                    <h3 className="mt-5 mb-3">User Comments</h3>
+                    {!detail.comments.length ? (<p>No comments for this show yet!</p>) 
+                    : (<CommentDiv comments={detail.comments}/>)}
                     </DetailJumbotron>
 
                 ))}
