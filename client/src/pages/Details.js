@@ -51,12 +51,13 @@ class DetailsPage extends Component {
                         : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
                             <p><a className="btn btn-outline-danger p-2" href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
                     </DetailJumbotron>
+
+                ))}
                     <CommentForm
                         comment={this.state.comment}
                         handleInputChange={this.handleInputChange}
                         addComment={this.addComment}
                     />
-                ))}
             </div>
         )
     }

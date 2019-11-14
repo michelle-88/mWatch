@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 function CommentForm(props){
     return(
@@ -15,3 +15,5 @@ function CommentForm(props){
         </form>
     )
 }
+
+export default CommentForm;
