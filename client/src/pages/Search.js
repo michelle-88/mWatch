@@ -4,6 +4,7 @@ import DBAPI from "../utils/DBAPI";
 import SearchForm from "../components/SearchForm";
 import SmallCard from "../components/SmallCard";
 import Button from "../components/Button";
+import Container from "../components/Container";
 import {usernameTransfer} from "../components/Login";
 
 const styles = {
@@ -51,6 +52,8 @@ class Search extends Component {
                     handleInputChange={this.handleInputChange}
                     handleSearchSubmit={this.handleSearchSubmit}
                 />
+                <Container>
+                <div className="card-columns mt-3">
                 {this.state.shows.map(show => (
                     <SmallCard 
                         key={show.id}
@@ -60,10 +63,13 @@ class Search extends Component {
                         summary={show.overview}
                     >
                     <Button data-id={show.id} className="btn btn-success" onClick={() => this.saveShow(show.id, show.name, show.poster_path, show.overview)}>
+                        <i className="fas fa-plus mr-2"></i>
                         Add to Watch List
                     </Button>
                     </SmallCard>
                 ))}
+                </div>
+                </Container>
             </div>
         )
     }

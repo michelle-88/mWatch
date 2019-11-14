@@ -60,6 +60,7 @@ class WatchList extends Component {
             <div>
                 <h1 style={styles.title} className="text-danger text-center my-3">Your Watch List</h1>
                 <Container>
+                <div className="card-columns">
                 {this.state.shows.map(show => (
                     <SmallCard
                     key={show.id}
@@ -68,14 +69,19 @@ class WatchList extends Component {
                     poster={show.poster}
                     summary={show.summary}
                     >
-                    <Button className="btn btn-danger" onClick={() => this.deleteShow(show._id)}>
-                        Remove
-                    </Button>
+                    <div className="text-center">
                     <Button className="btn btn-info" onClick={() => this.getDetails(show.id)}>
+                        <i class="fas fa-info-circle fa-lg mr-2"></i>
                         View More
                     </Button>
+                    <Button className="btn btn-danger" onClick={() => this.deleteShow(show._id)}>
+                        <i class="fas fa-times fa-lg mr-2"></i>
+                        Remove
+                    </Button>
+                    </div>
                     </SmallCard>
                 ))}
+                </div>
                 </Container>
             </div>
         )
