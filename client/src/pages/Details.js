@@ -10,7 +10,8 @@ class DetailsPage extends Component {
     state = {
         details: [],
         comment: "",
-        updated: false
+        updated: false,
+        dataFound: true
     }
 
     handleInputChange = event => {
@@ -29,7 +30,12 @@ class DetailsPage extends Component {
 
     componentDidMount() {
         DBAPI.getFromPeanutGallery(detailsId)
-            .then(res => this.setState({ details: [res.data] }))
+            .then(res => {
+                if(res.data === null){
+                    this.setState({dataFound: false})
+                }
+                this.setState({ details: [res.data] })
+            })
             .catch(err => console.log(err));
     };
 
@@ -45,6 +51,15 @@ class DetailsPage extends Component {
     };
 
     render() {
+        if(!this.state.dataFound){
+            return(
+                <div>
+                    <h1 className="text-white text-center">No show information available at this time</h1>
+                </div>
+            )
+        } else {
+
+
         return (
             <div className="container">
                 {this.state.details.map(detail => (
@@ -76,6 +91,7 @@ class DetailsPage extends Component {
                     />
             </div>
         )
+    }
     }
 }
 

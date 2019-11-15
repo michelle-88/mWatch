@@ -5,8 +5,6 @@ const passport = require('passport');
 
 module.exports = {
     getUser: function(req, res, next) {
-		console.log("User in getUser")
-		console.log(req.session.passport.user)
         if(req.session.passport.user) {
             return res.status(200).json({
                 user: req.session.passport.user,
@@ -37,14 +35,6 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
-		// console.log('/login handler');
-		// console.log("req.body")
-		// console.log(req.body)
-		// console.log("User in getUser")
-		// console.log(req.session.passport.user)
-		// console.log(req.session)
-		// console.log("status")
-		// console.log(res.status)
 		if(!req.session.passport.user){
 			return false
 		}
@@ -52,8 +42,6 @@ module.exports = {
 			if (err) {
 				return next(err);
 			}
-			console.log("res.status")
-			console.log(res.status())
 			res.status(200).send('OK');
 		});
     },
@@ -73,26 +61,8 @@ module.exports = {
         console.log(`Ping Dinger ${req.statusCode}`);
 		res.status(200).send("Dong!");
 	},
-	// checkShow: function(req, res){
-	// 	console.log(req.body)
-	// 	Account
-	// 	  .findOne({username: req.params.username})
-	// 	  .then(console.log("Testing Here"))
-	// 	  console.log("req.body")
-	// 	  console.log(req.body)
-	// 	  console.log("req.body.id")
-	// 	  console.log(req.body.id)
-	// 	  console.log("dbModel")
-	// 	  console.log(dbModel)
-	// 	  .then(dbModel => console.log(dbModel))
-	// 	  .then(dbModel.watchList.forEach(show=>{
-	// 		  console.log("logging show")
-	// 		  console.log(show)
-	// 	  }))
-	// 	  .catch(err => res.status(422).json(err))
-	// },
+
 	addToList: function(req, res) {
-		console.log(req.body)
 		Account
 		  .findOneAndUpdate({username: req.params.username}, {$push: {watchList: req.body}})
 		  .then(dbModel => res.json(dbModel))

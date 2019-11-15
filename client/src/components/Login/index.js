@@ -48,7 +48,6 @@ class Login extends React.Component {
 		
 		return (
 			<div>
-				{/* <p className="text-white">You must log in to view the page at {from.pathname}</p> */}
 				<Landing/>
 				<LoginForm onLogin={this.login} />
 				<LandingImage/>

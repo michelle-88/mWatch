@@ -114,17 +114,11 @@ class Trending extends Component {
     componentDidMount(){
       this.setState({username: this.props.match.params.username})
       this.searchByGenre();
-      console.log(usernameTransfer)
     }
 
     searchByGenre = id => {
-        console.log("searching genre")
-        console.log(id)
         TVAPI.trendingGenre(id)
             .then(res => {
-                console.log("genre results")
-                console.log(res)
-                console.log(res.results)
                 this.setState({ shows: res.results})
             })
             .catch(err => console.log(err));
