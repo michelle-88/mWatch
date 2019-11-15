@@ -12,18 +12,10 @@ const Auth = {
 			credentials: 'include'
 		})
 		.then((res) => {
-			console.log("res")
-			console.log(res)
 			if(res.status !== 200){
 				return false
 			}
-			console.log("status")
-			console.log(res.status)
-			console.log("isAuthenticated")
-			console.log(this.isAuthenticated)
 			this.isAuthenticated = true
-			console.log("isAuthenticated")
-			console.log(this.isAuthenticated)
 			if (typeof cb === 'function') {
 				cb(res.json().user);
 			}

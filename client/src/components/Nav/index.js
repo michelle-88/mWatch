@@ -29,8 +29,6 @@ function Nav() {
           </Link>
         </li>
       </ul>
-      {/* <span className="ml-5 pl-5">
-      </span> */}
       <ul className="navbar-nav nav-flex-icons">
         <li className="nav-item">
           <a onClick={() => {Auth.signout()}} className="nav-link text-danger" href="/">

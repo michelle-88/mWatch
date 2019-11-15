@@ -15,9 +15,6 @@ function BtnContainer(props) {
                 </div>
             </div>
         </div>
-        // <div className="container-fluid text-center">
-        //     {props.children}
-        // </div>
     )
 }
 

@@ -32,31 +32,12 @@ class App extends React.Component {
 				<PrivateRoute exact path="/search" component={Search}/>
 				<PrivateRoute exact path="/watchlist" component={WatchList}/>				
 				<PrivateRoute path="/peanutgallery" component={Details}/>				
-				{/* <Route component={NoMatch} /> */}
 			</Switch>
 		</div>
 	</Router>
 		)
 	}
 }
-
-
-//Authbutton component / withRouter is imported from react-router
-// const AuthButton = withRouter(({ history }) => (
-// 	Auth.isAuthenticated ? (
-// 		<div className="container bg-dark">
-// 			<p className="text-white">Success! You are Logged In!</p>
-// 			<button className="btn btn-danger" 
-// 				onClick={() => {
-// 					Auth.signout(() => history.push('/'))
-// 				}}>
-// 				Sign out
-// 			</button>
-// 		</div>
-// 	) : (
-// 		<p className="text-white">You are not logged in.</p>
-// 	)
-// ))
 
 // This is the private route component this checks for an authorized user here
 const PrivateRoute = ({ component: Component, ...rest }) => (
