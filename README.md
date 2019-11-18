@@ -1,35 +1,41 @@
-# M.E.R.N. Authentication Boilerplate
-Full Stack Project starter with basic components routes and authentication. The project is in MVC format that includes the User model and controller. The first routes in the client are protected by the passport authentication using the local strategy. 
+# mWatch
 
-## Purpose and Inspiration
-You can fork and run this to quickly have an MVC project up and running, then simply add the controllers models and components that your project needs. I wanted to have a place to start with no other models than the User model. This is currently at the point where you can:
+mWatch is a webiste that allows users to search for TV shows and add them to a watch list. Users can then view more information to see where to watch their favorite shows or add comments for everyone to view.
 
-## MVC
-This project is structured in Full Stack Javascript with Mongoose Models REACT Views and Controllers. The heavy lifting for the authentication is done in src/utils/Auth.js.
+## Inspiration for the application
+mWatch was created by two amazing developers **Michelle Mesorana** and **Ryan Goderis** who were tired of switching back and forth from an seemingly endless supply of streaming services and just simply wanted to know where to watch their favorite shows.
 
-- Register a new user
-- Login with an existing user
-- Log Out
+## Walk through of mWatch
 
-## Tech Stack
-+ [MONGOOSE ORM](https://www.npmjs.com/package/mongoose)
-+ [EXPRESS](https://www.npmjs.com/package/express)
-+ [REACT](https://reactjs.org/)
-+ [NODE](https://nodejs.org/en/)
-+ [PASSPORT](http://www.passportjs.org/docs/username-password/)
+## Landing Page
+![Landing Page](./client/public/Images/mWatch_Landing.png)
 
-#### Install and run
-Install all the dependencies with Yarn or NPM
-`yarn install` <br>
-Make sure you start Mongod and have mongoDB running..
-`mongod` <br>
-Then start the project
-`yarn start`
+Users be given the option to visit the sign up page if they are a new user or the sign in page if they are a returning user.
 
-## Register a New User
-![Register A New User](/client/public/images/Register.png)
+## Sign In/Sign Up
+![Landing Page](./client/public/Images/mWatch_SignIn.png)
 
-## Routes are protected from Users that are not logged in
-![Login an existing User](/client/public/images/ProtectedRoute.png)
+Here the user will enter in their username and password and through *Passport* the user will be verified and be redirected to **Trending page**.
 
+## Trending Page
+![Landing Page](./client/public/Images/mWatch_Trending.png)
+
+Once here the user can see most trending TV shows as well as the highest rated shows by genre.
+
+## Search Page
+![Landing Page](./client/public/Images/mWatch_Search.png)
+
+If a user wants to search for a specific show then they can visity the **Search Page** and search directly for any TV show.
+
+## Watch List
+![Landing Page](./client/public/Images/mWatch_WatchList.png)
+
+At both the **Trending** and **Search** pages if the user sees a show they want to watch then they can add it to their **Watch List**.  Here the user can see what shows they have on their watch list, delete a show from the list, or view more information for a specific show.
+
+## Show Page
+
+If a user decides to view more information they are taken to the **Show Page**.  Here the user sees more detailed information including the where to watch feature.  The user can also see any comments any other user has left for that show as well as leave a comment themself.
+
+## Visit mWatch
+[mWatch](https://mwatch.herokuapp.com/)
 
