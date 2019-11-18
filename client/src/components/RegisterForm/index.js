@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-
+const styles = {
+	formPadding: {
+		paddingLeft: "350px",
+		paddingRight: "350px"
+	}
+}
 
 class RegisterForm extends React.Component {
 	// refs
@@ -25,10 +30,12 @@ class RegisterForm extends React.Component {
 					}}
 					className="bg-dark"
 				>
-					<div className="form-group container">
+					<div className="form-group container" style={styles.formPadding}>
 						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
 						<input className="form-control"  ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
+						<div className="d-flex flex-row-reverse">
 						<button className="btn btn-white text-dark" type='submit'>Register</button>
+						</div>
 					</div>
 				</form>
 			

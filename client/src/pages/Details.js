@@ -54,7 +54,7 @@ class DetailsPage extends Component {
         if(!this.state.dataFound){
             return(
                 <div>
-                    <h1 className="text-white text-center">No show information available at this time</h1>
+                    <h2 className="text-white text-center mt-5">No show information available at this time... Please check back later!</h2>
                 </div>
             )
         } else {
@@ -75,20 +75,29 @@ class DetailsPage extends Component {
                         writer={detail.writer}
                         rating={detail.rating}
                     >
+                    <div className="row">
+                    <div className="col text-center">
+                    <h3 className="mt-5 mb-3">Where To Watch</h3>
                     {!detail.whereToWatch.length ? (<p>No streaming information available... Please check back later!</p>)
                         : (<div><p><strong>Streaming Service:</strong> {detail.whereToWatch[0].locationName}</p>
                             <p><a className="btn btn-outline-danger p-2" href={detail.whereToWatch[0].streamingUrl} target='_blank'>Start Watching Now!</a></p></div>)}
-                    <h3 className="mt-5 mb-3">User Comments</h3>
+                    </div>
+                    </div>
+
+                    <CommentForm
+                      comment={this.state.comment}
+                      handleInputChange={this.handleInputChange}
+                      addComment={this.addComment}
+                    />
+                    <div className="row">
+                    <div className="col mx-3">
+                    <h3 className="mt-2 mb-3">User Comments</h3>
                     {!detail.comments.length ? (<p>No comments for this show yet!</p>) 
                     : (<CommentDiv comments={detail.comments}/>)}
+                </div>
+                </div>
                     </DetailJumbotron>
-
                 ))}
-                    <CommentForm
-                        comment={this.state.comment}
-                        handleInputChange={this.handleInputChange}
-                        addComment={this.addComment}
-                    />
             </div>
         )
     }
