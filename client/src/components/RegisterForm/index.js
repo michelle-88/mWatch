@@ -2,8 +2,8 @@ import React from 'react';
 
 const styles = {
 	formPadding: {
-		paddingLeft: "350px",
-		paddingRight: "350px"
+		paddingLeft: "15%",
+		paddingRight: "15%"
 	}
 }
 
