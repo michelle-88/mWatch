@@ -9,10 +9,10 @@ function SmallCard(props) {
               <h4 className="card-title pb-1"><strong>{props.name}</strong></h4>
               </div>
             <div className="row">
-                <div className="col-12 col-lg-4">
+                <div className="col-12 col-xl-5 pr-4 text-center">
                     <img className="trend-img pr-2" src={props.poster ? `http://image.tmdb.org/t/p/original${props.poster}` : "http://www.salasardyechem.com/img/not-available.jpg"} alt="Show Poster"/>
                 </div>
-                <div className="col-12 col-lg-8 pl-5">
+                <div className="col-12 col-xl-7 pl-4 pt-4 pt-xl-0">
                     <p className="text-black summary">{props.summary}</p>
                     {props.children}
                 </div>
