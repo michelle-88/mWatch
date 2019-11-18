@@ -1,9 +1,9 @@
 # mWatch
 
-mWatch is a webiste that allows users to search for TV shows and add them to a watch list. Users can then view more information to see where to watch their favorite shows or add comments for everyone to view.
+mWatch is a website that allows users to search for TV shows and add them to a watch list. Users can then view more information to see where to watch their favorite shows or add comments for everyone to view.
 
 ## Inspiration for the application
-mWatch was created by two amazing developers **Michelle Mesorana** and **Ryan Goderis** who were tired of switching back and forth from an seemingly endless supply of streaming services and just simply wanted to know where to watch their favorite shows.
+mWatch was created by two amazing developers **Michelle Mesorana** and **Ryan Goderis** who were tired of switching back and forth from a seemingly endless supply of streaming services and just simply wanted to know where to watch their favorite shows.
 
 ## Walk through of mWatch
 
@@ -25,7 +25,7 @@ Once here the user can see most trending TV shows as well as the highest rated s
 ## Search Page
 ![Landing Page](./client/public/Images/mWatch_Search.png)
 
-If a user wants to search for a specific show then they can visity the **Search Page** and search directly for any TV show.
+If a user wants to search for a specific show then they can visit the **Search Page** and search directly for any TV show.
 
 ## Watch List
 ![Landing Page](./client/public/Images/mWatch_WatchList.png)
