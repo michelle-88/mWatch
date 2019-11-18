@@ -1,0 +1,7 @@
+.btn-elegant:hover {
+    color: #ff4444 !important;
+}
+
+textarea:focus {
+    border-color: #ff4444 !important;
+}
