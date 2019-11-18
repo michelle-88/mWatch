@@ -28,6 +28,12 @@ class DetailsPage extends Component {
         .catch(err => console.log(err));
     };
 
+    deleteComment = (commentId, showId) => {
+        DBAPI.deleteComment(commentId, showId)
+        .then(res => this.setState({updated: true}))
+        .catch(err => console.log(err));
+    };
+
     componentDidMount() {
         DBAPI.getFromPeanutGallery(detailsId)
             .then(res => {
@@ -93,7 +99,10 @@ class DetailsPage extends Component {
                     <div className="col mx-3">
                     <h3 className="mt-2 mb-3">User Comments</h3>
                     {!detail.comments.length ? (<p>No comments for this show yet!</p>) 
-                    : (<CommentDiv comments={detail.comments}/>)}
+                    : (<CommentDiv 
+                        comments={detail.comments}
+                        deleteComment={this.deleteComment}
+                        />)}
                 </div>
                 </div>
                     </DetailJumbotron>
