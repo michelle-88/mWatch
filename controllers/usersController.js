@@ -113,5 +113,16 @@ module.exports = {
 		  })
 		  .then(dbModel => res.json(dbModel))
 		  .catch(err => res.status(422).json(err));
+	},
+
+	deleteComment: function(req, res) {
+		Comment
+		  .findOneAndDelete({_id: req.params.commentId})
+		  .then(function(dbComment) {
+			  console.log(dbComment._id)
+			  return PeanutGallery.findOneAndUpdate({tmdbId: req.params.showId}, {$pull: {comments: dbComment._id} })
+		  })
+		  .then(dbModel => res.json(dbModel))
+		  .catch(err => res.status(422).json(err))
 	}
 };

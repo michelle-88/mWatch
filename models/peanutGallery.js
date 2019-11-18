@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const PeanutGallery = new Schema({
     imdbId: {
         type: String,
-        unique: true
+        // unique: true
     },
     tmdbId: Number,
     title: String,

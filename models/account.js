@@ -8,7 +8,7 @@ const Account = new Schema({
     watchList: [{
         id: {
             type: Number,
-            unique: true
+            // unique: true
         },
         name: String,
         poster: String,

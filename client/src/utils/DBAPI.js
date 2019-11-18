@@ -28,5 +28,9 @@ export default {
     // Add Comment to the db
     addComment: function(id, commentData) {
         return axios.post("/api/users/peanutgallery/comments/" + id, commentData);
+    },
+    // Delete Comment from db
+    deleteComment: function(commentId, showId) {
+        return axios.delete("/api/users/peanutgallery/comments/" + commentId + "/" + showId);
     }
 };

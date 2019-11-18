@@ -29,6 +29,8 @@ router.route("/peanutgallery/:id")
   .post(usersController.updatePeanutGallery);
 router.route("/peanutgallery/comments/:id")
   .post(usersController.postComment);
+router.route("/peanutgallery/comments/:commentId/:showId")
+  .delete(usersController.deleteComment);
 
 // Matches with "/api/users/:id"
 
